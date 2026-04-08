@@ -1,0 +1,1223 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[margin=2cm,headheight=15pt]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{xparse}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{longtable}
+\pgfplotsset{compat=1.18}
+\usepackage{float}
+\usepackage{needspace}
+
+% ── Paleta de colores ──────────────────────────────────────────────────────────
+\definecolor{headerblue}{HTML}{CFE8F7}
+\definecolor{lineblue}{HTML}{6FA8DC}
+\definecolor{quadgreen}{HTML}{D9EAD3}
+\definecolor{roigreen}{HTML}{274E13}
+\definecolor{deepgreen}{RGB}{22, 51, 53}
+\definecolor{terracotta}{RGB}{197, 123, 87}
+\definecolor{codebg}{RGB}{248, 248, 248}
+\definecolor{comment}{RGB}{100, 100, 100}
+\definecolor{keyword}{RGB}{0, 80, 160}
+\definecolor{strcolor}{RGB}{180, 60, 30}
+\usepackage{colortbl}
+\definecolor{primary}{RGB}{52,73,94}
+\definecolor{accent}{RGB}{41,128,185}
+\definecolor{todoCol}{RGB}{252,243,207}
+\definecolor{progCol}{RGB}{214,234,248}
+\definecolor{doneCol}{RGB}{209,242,235}
+
+% ── Ajustes generales ──────────────────────────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{8pt}
+\arrayrulecolor{lineblue}
+\setlength{\headsep}{15pt}
+\thispagestyle{empty}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% ── Estilos de código ──────────────────────────────────────────────────────────
+\lstdefinestyle{js}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{keyword}\bfseries,
+  stringstyle=\color{strcolor},
+  commentstyle=\color{comment}\itshape,
+  numbers=left, numberstyle=\tiny\color{gray}, numbersep=8pt,
+  breaklines=true, frame=single,
+  rulecolor=\color{terracotta!50},
+  tabsize=2, showstringspaces=false,
+}
+
+\lstdefinestyle{sql}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{deepgreen}\bfseries,
+  commentstyle=\color{comment}\itshape,
+  numbers=left, numberstyle=\tiny\color{gray}, numbersep=8pt,
+  breaklines=true, frame=single,
+  rulecolor=\color{deepgreen!40},
+  tabsize=2, showstringspaces=false,
+  morekeywords={CREATE,TABLE,IF,NOT,EXISTS,PRIMARY,KEY,CHECK,IN,
+    CASE,WHEN,THEN,END,STORED,GENERATED,ALWAYS,AS,UNIQUE,INTEGER,
+    VARCHAR,INSERT,INTO,VALUES,SELECT,FROM,WHERE,ORDER,BY,ASC,
+    LOWER,RETURNING,DROP},
+}
+
+\lstdefinestyle{bash}{
+  backgroundcolor=\color{black!6},
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true, frame=single,
+  rulecolor=\color{gray!40},
+  showstringspaces=false,
+}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    \vspace*{1.5cm}
+    {\Large \textbf{UNIVERSIDAD MAYOR DE SAN SIMÓN}}\\[0.5cm]
+    {\Large \textbf{FACULTAD DE CIENCIAS Y TECNOLOGÍA}}\\[1.2cm]
+    \includegraphics[width=4.5cm]{img/umss_logo.png}\\[1.5cm]
+    {\LARGE \textbf{DOCUMENTO DE GESTIÓN SCRUM}}\\[0.4cm]
+    {\Large Sistemas de Información II}\\[2.5cm]
+    {\large
+    \textbf{Estudiante:} Brenda Vargas Mollo\\[0.6cm]
+    \textbf{Carrera:} Ingeniería Informática\\[0.6cm]
+    \textbf{Docente:} Lic. Flores Soliz Juan Marcelo\\[0.6cm]
+    \textbf{Materia:} Sistemas de Información II
+    }
+    \vfill
+    {\large Cochabamba -- Bolivia}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Introducción}
+
+% TODO: escribir la introducción del proyecto
+
+\textbf{Descripción del proyecto:} % TODO
+
+\textbf{Objetivo general del sprint:} % TODO
+
+\textbf{Contenido del documento:} % TODO
+
+% -----------------------------------------------
+\subsection*{Glosario de términos}
+
+\begin{itemize}
+    \item \textbf{HU}: Historia de usuario. Descripción de una funcionalidad desde el punto de vista del usuario.
+    \item \textbf{Alfajor}: Unidad de medida de complejidad usada por el equipo.
+    \item \textbf{Task}: Tarea técnica concreta en la que se descompone una historia de usuario.
+    \item \textbf{Definition of Done (DoD)}: Criterio que define cuándo una task se considera terminada.
+    \item \textbf{Daily Scrum}: Reunión breve diaria del equipo para sincronizar avances y detectar impedimentos.
+    \item \textbf{Task Board}: Tablero de tareas con columnas \textit{To Do}, \textit{In Progress} y \textit{Done}.
+    \item \textbf{Story Point (SP)}: Unidad relativa de estimación de esfuerzo para las historias de usuario.
+\end{itemize}
+
+\newpage
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Sprint 0 — Preparación del Proyecto}
+
+\subsection{Definición del Proyecto}
+
+% TODO: completar esta sección
+
+\begin{itemize}
+    \item \textbf{Nombre del proyecto:} % TODO
+    \item \textbf{Problema que se busca resolver:} % TODO
+    \item \textbf{Objetivo general del sistema:} % TODO
+    \item \textbf{Usuarios involucrados:} % TODO
+\end{itemize}
+
+% -----------------------------------------------
+\subsection{Product Backlog Inicial}
+
+
+\begin{tcolorbox}[title=\textbf{HU-01: Entregar trabajos de forma estandarizada}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero enviar mis documentos siguiendo las normas del curso, tal que el docente cuente con un archivo legible para la revisión.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el estudiante selecciona un archivo con extensión permitida, cuando confirme el envío, entonces el documento queda registrado en el repositorio.
+    \item Dado que el archivo no cumple con la extensión requerida, cuando se intente el envío, entonces la entrega no es procesada.
+    \item Dado que la entrega es rechazada por formato inválido, cuando esto ocurra, entonces el estudiante recibe una notificación con el motivo del rechazo.
+\end{itemize}
+\textbf{Complejidad [X]:} 8 \hfill \textbf{Importancia [Y]:} 780 \hfill \textbf{Estimación [Z]:} 5 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-02: Gestionar el cronograma de evaluación}]
+\textbf{Historia:} \\
+Yo como docente, requiero establecer un límite de tiempo para la recepción de trabajos, tal que fomentar la responsabilidad académica y organizar el período de revisión.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el docente define una fecha de cierre posterior a la actual, cuando publique la tarea, entonces el plazo queda vinculado a la actividad.
+    \item Dado que una tarea tiene plazo establecido, cuando sea pública, entonces la fecha es visible para todos los estudiantes inscritos.
+    \item Dado que se ha fijado un límite de tiempo, cuando la tarea sea consultada, entonces la fecha permanece asociada sin modificaciones automáticas.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 860 \hfill \textbf{Estimación [Z]:} 5 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-03: Crear asignación clasificada por período académico}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear una tarea asignándola a un período académico específico (ej. 1er Parcial, 2do Parcial), tal que mantener organizado el avance de la materia y que los estudiantes identifiquen a qué bloque corresponde.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el docente está en el formulario de creación, cuando seleccione un período del menú desplegable y guarde, entonces el sistema etiquetará la tarea bajo esa categoría en el panel principal.
+    \item Dado que la tarea ha sido creada exitosamente, cuando se publique, entonces el sistema enviará un correo a todos los estudiantes inscritos con el enlace directo.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 800 \hfill \textbf{Estimación [Z]:} 4 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-04: Evaluar entrega y solicitar versión corregida}]
+\textbf{Historia:} \\
+Yo como docente, requiero registrar observaciones sobre la entrega de un estudiante, tal que solicitarle que corrija sus errores y suba una versión mejorada.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el docente revisa la ``Versión 1'' de un alumno, cuando asigne el estado ``Requiere Mejoras'' y guarde sus comentarios, entonces el sistema habilitará automáticamente el buzón del estudiante para una nueva subida.
+    \item Dado que el docente ha publicado sus observaciones, cuando el estado cambie, entonces el estudiante recibirá un correo indicando que debe revisar los comentarios.
+\end{itemize}
+\textbf{Complejidad [X]:} 3 \hfill \textbf{Importancia [Y]:} 900 \hfill \textbf{Estimación [Z]:} 3 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-05: Subir versiones iterativas de una tarea}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero subir un archivo corregido a una tarea previamente observada, tal que el sistema genere la siguiente versión sin borrar el historial de entregas y correcciones anteriores.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el estudiante tiene el buzón habilitado para re-entrega, cuando suba su nuevo archivo, entonces el sistema lo etiquetará automáticamente de forma correlativa (ej. ``Versión 2'').
+    \item Dado que se ha subido una nueva versión, cuando el docente o estudiante entren al detalle de la tarea, entonces podrán ver la versión anterior y sus comentarios en modo de solo lectura.
+\end{itemize}
+\textbf{Complejidad [X]:} 8 \hfill \textbf{Importancia [Y]:} 1000 \hfill \textbf{Estimación [Z]:} 8 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-06: Panel de seguimiento de versiones y estado de tareas}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero visualizar un panel de control con mis tareas filtradas por parcial, tal que saber rápidamente qué versión tiene cada una y si tengo correcciones pendientes.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el estudiante accede a su panel, cuando haga clic en la pestaña ``1er Parcial'', entonces la lista mostrará únicamente las tareas vinculadas a ese período.
+    \item Dado que una tarea tiene el estado ``Requiere Mejoras'', cuando el estudiante revise su panel, entonces verá una etiqueta visual indicando ``Observado - Subir Versión 2''.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 800 \hfill \textbf{Estimación [Z]:} 5 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-07: Consultar listado de tareas de un curso}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero obtener la lista de tareas de un curso, tal que conocer las actividades pendientes.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el estudiante accede al curso, cuando consulte las tareas, entonces el sistema mostrará la lista completa de tareas del curso.
+    \item Cada tarea debe incluir al menos el título y la fecha de entrega.
+    \item El sistema debe permitir identificar visualmente cuáles tareas están pendientes.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 900 \hfill \textbf{Estimación [Z]:} 4 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-08: Acceder al detalle de una tarea}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero acceder al detalle de una tarea, tal que conocer la información necesaria para realizarla.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Dado que el estudiante selecciona una tarea, cuando acceda a su detalle, entonces el sistema mostrará la información completa de la tarea.
+    \item La información debe incluir descripción y fecha de entrega.
+    \item El acceso está restringido a estudiantes inscritos en el curso.
+\end{itemize}
+\textbf{Complejidad [X]:} 3 \hfill \textbf{Importancia [Y]:} 800 \hfill \textbf{Estimación [Z]:} 3 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-09: Consultar material de apoyo del curso}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero consultar el material de apoyo del curso, tal que tener recursos disponibles para el estudio.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item El sistema retorna los recursos del curso.
+    \item Cada recurso incluye su tipo (libro, diapositivas, etc.).
+    \item El acceso está restringido a estudiantes inscritos.
+\end{itemize}
+\textbf{Complejidad [X]:} 3 \hfill \textbf{Importancia [Y]:} 720 \hfill \textbf{Estimación [Z]:} 3 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-10: Descargar material del curso}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero descargar el material del curso, tal que disponer de los recursos en mi dispositivo sin conexión a internet.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item El sistema permite descargar recursos del curso.
+    \item Cada recurso puede descargarse de forma individual.
+    \item La descarga está restringida a estudiantes inscritos.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 680 \hfill \textbf{Estimación [Z]:} 4 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-11: Crear una clase virtual}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear una clase virtual con nombre, descripción y código de acceso, tal que mis estudiantes puedan unirse y acceder al material del curso.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item El sistema genera un código único de acceso al crear la clase.
+    \item Se puede agregar nombre, descripción e imagen de portada.
+    \item La clase aparece en el panel principal del docente tras su creación.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 900 \hfill \textbf{Estimación [Z]:} 5 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-12: Unirse a una clase mediante código de acceso}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero unirme a una clase ingresando el código proporcionado por el docente, tal que pueda acceder a las tareas, materiales y anuncios del curso.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item El sistema valida que el código exista y esté activo.
+    \item Si el código es válido, el estudiante se agrega a la lista de la clase.
+    \item Si el código es inválido, se muestra un mensaje de error claro.
+\end{itemize}
+\textbf{Complejidad [X]:} 3 \hfill \textbf{Importancia [Y]:} 800 \hfill \textbf{Estimación [Z]:} 2 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-13: Publicar una tarea con fecha de entrega}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear y publicar tareas con instrucciones, archivos adjuntos y fecha límite, tal que los estudiantes sepan qué deben realizar y cuándo.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Se puede asignar título, descripción, puntaje máximo y fecha/hora límite.
+    \item Se permite adjuntar archivos (PDF, imágenes, documentos).
+    \item Los estudiantes reciben una notificación al publicarse la tarea.
+\end{itemize}
+\textbf{Complejidad [X]:} 8 \hfill \textbf{Importancia [Y]:} 1000 \hfill \textbf{Estimación [Z]:} 8 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-14: Entregar una tarea}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero subir mi trabajo en la tarea asignada antes de la fecha límite, tal que el docente pueda revisarlo y calificarlo.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Se pueden subir uno o más archivos como entrega.
+    \item El sistema indica claramente si la entrega es a tiempo o tardía.
+    \item El estudiante puede anular y reenviar su entrega antes de la fecha límite.
+\end{itemize}
+\textbf{Complejidad [X]:} 8 \hfill \textbf{Importancia [Y]:} 950 \hfill \textbf{Estimación [Z]:} 8 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-15: Calificar entregas y proporcionar retroalimentación}]
+\textbf{Historia:} \\
+Yo como docente, requiero revisar las entregas, asignar una calificación y dejar comentarios, tal que los estudiantes conozcan su desempeño y puedan mejorar.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item Se muestra la lista de entregas con el estado de cada estudiante (entregado, pendiente, tardío).
+    \item Se puede asignar un puntaje numérico dentro del rango definido.
+    \item El estudiante recibe una notificación cuando su tarea es calificada.
+\end{itemize}
+\textbf{Complejidad [X]:} 13 \hfill \textbf{Importancia [Y]:} 700 \hfill \textbf{Estimación [Z]:} 9 SP
+\end{tcolorbox}
+
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Criterio de importancia:} Escala de 1 a 1000 según el impacto funcional de la historia dentro del sistema. Se asigna mayor valor a las historias que responden a necesidades centrales del usuario, aportan al flujo principal del producto o habilitan otras funcionalidades.
+
+    \item \textbf{Criterio de complejidad:} Escala de 1 a 10 considerando la dificultad técnica, el esfuerzo de implementación y el nivel de integración requerido. Se toma en cuenta la lógica involucrada, el trabajo en interfaz, base de datos, backend, validaciones y dependencias con otras historias.
+
+    \item \textbf{Criterio de estimación:} Expresada en Story Points (SP), siguiendo la escala Fibonacci acordada por el equipo: muy pequeñas (1/2), pequeñas (1, 2, 3), medianas (5, 8, 13), grandes (20, 40), muy grandes (100), inestimables (?) o enormes ($\infty$). Representa el esfuerzo relativo de implementación.
+\end{itemize}
+
+% -----------------------------------------------
+\subsection{Selección de Historias de Usuario para el Sprint 1}
+% TODO: completar con las HU elegidas y su justificación
+
+\begin{itemize}
+    \item \textbf{HU candidatas al Sprint 1:}
+\end{itemize}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-S1-01: Crear una clase virtual}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear una clase virtual con nombre, descripción y código de acceso, tal que mis estudiantes puedan unirse y acceder al material del curso.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item La clase debe registrarse correctamente en la base de datos con todos sus campos.
+    \item El sistema debe generar un código único de acceso de forma automática.
+    \item La clase creada debe ser visible en el panel principal del docente.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 850 \hfill \textbf{Estimación [Z]:} 11 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-S1-02: Unirse a una clase mediante código de acceso}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero unirme a una clase ingresando el código proporcionado por el docente, tal que pueda acceder a las tareas, materiales y anuncios del curso.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item El sistema debe validar que el código ingresado exista y esté activo.
+    \item El estudiante debe quedar registrado en la lista oficial de la clase.
+    \item Se debe mostrar retroalimentación clara: mensaje de error si falla, redirección si es exitoso.
+\end{itemize}
+\textbf{Complejidad [X]:} 3 \hfill \textbf{Importancia [Y]:} 900 \hfill \textbf{Estimación [Z]:} 6.5 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-S1-03: Publicar una tarea con fecha de entrega}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear y publicar tareas con instrucciones, archivos adjuntos y fecha límite, tal que los estudiantes sepan qué deben realizar y cuándo.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item La tarea debe guardar correctamente el título, descripción, puntaje y fecha límite.
+    \item El sistema debe permitir la subida y almacenamiento seguro de archivos adjuntos.
+    \item Se debe disparar una notificación a los estudiantes inscritos tras la publicación.
+\end{itemize}
+\textbf{Complejidad [X]:} 7 \hfill \textbf{Importancia [Y]:} 950 \hfill \textbf{Estimación [Z]:} 17 SP
+\end{tcolorbox}
+
+\vspace{1em}
+
+\begin{itemize}
+    \item \textbf{Justificación de la selección:} % TODO
+    \item \textbf{Capacidad del equipo:} % TODO alfajores en total
+    \item \textbf{Total de alfajores asumidos:} % TODO
+    \item \textbf{HU que quedaron fuera del sprint y motivo:} % TODO
+\end{itemize}
+
+% -----------------------------------------------
+\subsection{Estándares de Desarrollo}
+
+\subsubsection*{Repositorio del proyecto}
+
+El proyecto se gestiona en un único repositorio grupal en GitHub, ya que el equipo desarrolla una sola aplicación tipo Classroom.
+
+\textbf{Repositorio:} \url{https://github.com/Vargm-b/task-repository.git}
+
+La estrategia de ramas definida para el Sprint 1 es la siguiente:
+
+\begin{itemize}
+    \item rama principal: \texttt{main};
+    \item una rama individual por integrante con el formato \texttt{feature/nombre};
+    \item cada integrante desarrolla sus tasks en su propia rama;
+    \item los cambios se integran a \texttt{main} manteniendo la estructura común del sistema.
+\end{itemize}
+
+Esta organización permite trabajar en paralelo sin fragmentar la arquitectura del proyecto y facilita la integración al cierre del sprint.
+
+\subsubsection*{Stack tecnológico}
+
+\begin{itemize}
+    \item \textbf{HTML5 + CSS3}: estructura y diseño visual de la interfaz.
+    \item \textbf{JavaScript (ES6+)}: lógica del frontend.
+    \item \textbf{Node.js}: entorno de ejecución del backend.
+    \item \textbf{Express}: framework para la creación del servidor y definición de endpoints REST.
+    \item \textbf{PostgreSQL en Supabase}: almacenamiento de datos en base compartida por el equipo.
+\end{itemize}
+
+\subsubsection*{Dependencias del backend}
+
+\begin{itemize}
+    \item \textbf{express} \texttt{5.1.0}: servidor HTTP y enrutamiento.
+    \item \textbf{pg} \texttt{8.16.3}: cliente PostgreSQL para Node.js.
+    \item \textbf{dotenv} \texttt{17.2.1}: lectura de variables de entorno desde \texttt{.env}.
+    \item \textbf{path} (módulo nativo): manejo de rutas de archivos y carpetas.
+\end{itemize}
+
+Versiones mínimas requeridas: \textbf{Node.js 18} y \textbf{npm 9}.
+
+\subsubsection*{Estructura del proyecto}
+
+La estructura general del proyecto es la siguiente:
+
+\begin{verbatim}
+task-repository/
+|-- backend/
+|   |-- src/
+|   |   |-- core/
+|   |   |   |-- app.js
+|   |   |   |-- config.js
+|   |   |   |-- database.js
+|   |   |   `-- routes.js
+|   |   |-- modules/
+|   |   |   |-- classes/
+|   |   |   |   |-- class.controller.js
+|   |   |   |   |-- class.model.js
+|   |   |   |   |-- class.routes.js
+|   |   |   |   `-- class.service.js
+|   |   |   |-- enrollments/
+|   |   |   |   |-- enrollment.controller.js
+|   |   |   |   |-- enrollment.model.js
+|   |   |   |   |-- enrollment.routes.js
+|   |   |   |   `-- enrollment.service.js
+|   |   |   `-- assignments/
+|   |   |       |-- assignment.controller.js
+|   |   |       |-- assignment.model.js
+|   |   |       |-- assignment.routes.js
+|   |   |       `-- assignment.service.js
+|   |   `-- server.js
+|   |-- uploads/
+|   |-- .env
+|   |-- .gitignore
+|   `-- README.md
+|-- frontend/
+|   |-- assets/
+|   |-- styles/
+|   |   `-- styles.css
+|   |-- scripts/
+|   |   |-- classes.js
+|   |   |-- enrollments.js
+|   |   |-- assignments.js
+|   |   `-- utils.js
+|   |-- views/
+|   |   |-- create-class.html
+|   |   |-- join-class.html
+|   |   `-- create-assignment.html
+|   `-- index.html
+|-- package.json
+`-- package-lock.json
+\end{verbatim}
+
+Esta organización permite que todos los integrantes trabajen sobre la misma base de código desde su rama individual, manteniendo una estructura única y consistente para facilitar la integración del sistema.
+
+\subsubsection*{Modelo de datos — Sprint 1}
+
+Se definió la estructura de datos común en PostgreSQL a través de Supabase. Las tablas cubren el flujo funcional mínimo del Sprint 1: creación de clases, inscripción de estudiantes y publicación de tareas.
+
+\begin{itemize}
+    \item \textbf{Tabla \texttt{users}}
+    \begin{itemize}
+        \item \texttt{id}: identificador único del usuario (PK).
+        \item \texttt{name}: nombre completo.
+        \item \texttt{email}: correo electrónico único.
+        \item \texttt{role}: tipo de usuario (\texttt{teacher} o \texttt{student}).
+    \end{itemize}
+
+    \item \textbf{Tabla \texttt{classes}}
+    \begin{itemize}
+        \item \texttt{id}: identificador único de la clase (PK).
+        \item \texttt{name}: nombre de la clase virtual.
+        \item \texttt{description}: descripción general.
+        \item \texttt{access\_code}: código único de acceso generado por el sistema.
+        \item \texttt{teacher\_id}: referencia al docente creador (\texttt{users.id}).
+    \end{itemize}
+
+    \item \textbf{Tabla \texttt{enrollments}}
+    \begin{itemize}
+        \item \texttt{id}: identificador único de la inscripción (PK).
+        \item \texttt{class\_id}: referencia a la clase (\texttt{classes.id}).
+        \item \texttt{student\_id}: referencia al estudiante inscrito (\texttt{users.id}).
+    \end{itemize}
+
+    \item \textbf{Tabla \texttt{assignments}}
+    \begin{itemize}
+        \item \texttt{id}: identificador único de la tarea (PK).
+        \item \texttt{class\_id}: referencia a la clase (\texttt{classes.id}).
+        \item \texttt{title}: título de la tarea.
+        \item \texttt{description}: descripción o instrucciones.
+        \item \texttt{max\_score}: puntaje máximo asignado.
+        \item \texttt{due\_date}: fecha y hora límite de entrega.
+        \item \texttt{attachment\_url}: URL del archivo adjunto (opcional).
+        \item \texttt{created\_at}: fecha y hora de creación (autogenerado).
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Relaciones entre tablas}
+
+\begin{itemize}
+    \item \texttt{classes.teacher\_id} $\rightarrow$ \texttt{users.id}
+    \item \texttt{enrollments.class\_id} $\rightarrow$ \texttt{classes.id}
+    \item \texttt{enrollments.student\_id} $\rightarrow$ \texttt{users.id}
+    \item \texttt{assignments.class\_id} $\rightarrow$ \texttt{classes.id}
+\end{itemize}
+
+\subsubsection*{Configuración de la conexión a base de datos}
+
+Todos los integrantes utilizan las mismas variables de entorno para conectarse a la base de datos compartida en Supabase. El archivo \texttt{.env} debe contener:
+
+\begin{verbatim}
+DB_USER=valor
+DB_HOST=valor
+DB_NAME=valor
+DB_PASSWORD=valor
+DB_PORT=valor
+\end{verbatim}
+
+Este archivo \textbf{no debe subirse al repositorio}; debe incluirse en \texttt{.gitignore}.
+
+\subsubsection*{Instalación y ejecución local}
+
+\begin{enumerate}
+    \item Clonar el repositorio: \texttt{git clone <url>}
+    \item Ingresar a la carpeta del proyecto.
+    \item Instalar dependencias: \texttt{npm install}
+    \item Crear el archivo \texttt{.env} con las credenciales de conexión.
+    \item Ejecutar el backend: \texttt{node backend/index.js} (o el punto de entrada definido).
+    \item Abrir el frontend desde \texttt{frontend/pages/}.
+\end{enumerate}
+
+\subsubsection*{Convención de nombres}
+
+El equipo usa \textbf{inglés} para todos los identificadores técnicos (tablas, atributos, rutas, archivos, variables y funciones). La documentación se redacta en español.
+
+\begin{itemize}
+    \item Tablas y columnas: \texttt{snake\_case}, minúsculas, plural.
+    \item Variables y funciones JS: \texttt{camelCase}.
+    \item Archivos y carpetas: minúsculas, sin espacios, guión medio permitido.
+    \item Consistencia de nombres entre frontend, backend y base de datos.
+\end{itemize}
+
+\subsubsection*{Convención de commits}
+
+Los commits se escriben en inglés con mensajes breves y orientados a la acción, siguiendo el formato:
+
+\begin{verbatim}
+type(scope): short description
+\end{verbatim}
+
+Tipos definidos:
+
+\begin{itemize}
+    \item \texttt{feat}: nueva funcionalidad.
+    \item \texttt{fix}: corrección de errores.
+    \item \texttt{docs}: cambios en documentación.
+    \item \texttt{refactor}: reorganización interna sin cambiar comportamiento.
+    \item \texttt{style}: ajustes de formato o estilos visuales.
+    \item \texttt{chore}: tareas técnicas menores o de mantenimiento.
+\end{itemize}
+
+Ejemplos válidos:
+\begin{itemize}
+    \item \texttt{feat(classes): add create class endpoint}
+    \item \texttt{feat(enrollments): validate access code on join}
+    \item \texttt{feat(assignments): add due date field to form}
+    \item \texttt{fix(frontend): correct class join form validation}
+    \item \texttt{docs(sprint0): update development standards}
+\end{itemize}
+
+\subsubsection*{Política de integración de cambios}
+
+\begin{itemize}
+    \item No trabajar directamente sobre \texttt{main}.
+    \item Actualizar la rama personal antes de integrar (\texttt{git pull origin main}).
+    \item Verificar localmente que la funcionalidad no rompe la estructura común.
+    \item Comunicar al equipo cualquier conflicto detectado.
+    \item No marcar una task como \textit{Done} sin evidencia funcional e integración completada.
+\end{itemize}
+
+% -----------------------------------------------
+\subsection{Estándares de Interfaz de Usuario (UI)}
+
+Con el objetivo de mantener consistencia visual en todas las pantallas del sistema, el equipo definió los siguientes lineamientos de interfaz para el Sprint 1.
+
+\subsubsection*{Tipografía}
+
+\begin{itemize}
+    \item \textbf{Schibsted Grotesk}: títulos y encabezados principales.
+    \item \textbf{Roboto}: subtítulos, etiquetas y texto normal.
+\end{itemize}
+
+\subsubsection*{Tamaños de fuente}
+
+\begin{itemize}
+    \item Títulos principales: 32px.
+    \item Subtítulos y encabezados de sección: 20px.
+    \item Texto normal y formularios: 16px.
+    \item Texto auxiliar o secundario: 14px.
+\end{itemize}
+
+\subsubsection*{Espaciado y bordes}
+
+\begin{itemize}
+    \item Espaciado basado en múltiplos de 4px.
+    \item Padding interno recomendado: 12px a 16px en botones, inputs y contenedores.
+    \item Separación entre bloques: 16px a 24px.
+    \item Bordes de 1px en inputs, botones y contenedores.
+    \item Esquinas redondeadas moderadas para mejorar la legibilidad visual.
+    \item Evitar sombras excesivas en los componentes principales.
+\end{itemize}
+
+\subsubsection*{Paleta de colores}
+
+% TODO: definir colores primarios, secundarios, fondos e indicadores visuales.
+
+La paleta de colores del sistema será definida de manera grupal antes de la implementación final de la interfaz. Este apartado queda pendiente de validación por el equipo.
+
+\subsubsection*{Indicadores visuales de estado}
+
+% TODO: definir colores y estilos para mensajes de éxito, error y validación.
+
+Los indicadores de éxito, error, advertencia y estados de interacción serán definidos junto con la paleta de colores del sistema.
+
+% -----------------------------------------------
+\subsection{Definition of Done (DoD) del Sprint}
+
+Una task se considera \textbf{Done} únicamente si cumple con todas las condiciones siguientes:
+
+\begin{itemize}
+    \item La funcionalidad implementada opera correctamente de forma local.
+    \item El código fue integrado al repositorio grupal desde la rama individual.
+    \item No rompe la estructura general ni el funcionamiento del sistema.
+    \item Cumple con los estándares técnicos definidos por el equipo.
+    \item Cumple con los lineamientos de interfaz establecidos para el sprint.
+    \item Cuenta con evidencia funcional: captura de pantalla, prueba documentada o avance verificable.
+\end{itemize}
+
+% -----------------------------------------------
+\subsection{Arquitectura General del Sistema}
+
+% TODO: describir la arquitectura general del sistema
+% Esquema: frontend → backend → base de datos
+% Quién es responsable de la puerta de conexión común
+
+% TODO: insertar diagrama o esquema de arquitectura
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{arquitectura.png}
+%     \caption{Arquitectura general del sistema — Sprint 0}
+% \end{figure}
+
+% -----------------------------------------------
+\subsection{Diagramas del Sistema}
+
+% TODO: insertar diagrama de clases inicial con explicación breve
+% TODO: insertar modelo entidad-relación de la base de datos
+% TODO: insertar diagrama de componentes si aplica
+
+% -----------------------------------------------
+\subsection{Planificación de Capacidad del Equipo}
+
+% TODO: completar capacidad individual y total del equipo
+
+\begin{longtable}{|p{4cm}|p{3cm}|}
+\hline
+\textbf{Integrante} & \textbf{Capacidad (alfajores)} \\
+\hline
+... & ... \\
+... & ... \\
+... & ... \\
+... & ... \\
+... & ... \\
+\hline
+\textbf{Total del equipo} & \textbf{...} \\
+\hline
+\end{longtable}
+
+\textbf{Meta del Sprint 1:} % TODO
+
+\newpage
+
+% ══════════════════════════════════════════════════════════════════════════════
+\section{Sprint 1 — Ejecución}
+
+% -----------------------------------------------
+\subsection{Objetivo del Sprint 1}
+
+% TODO: describir qué se busca entregar al final del sprint
+% TODO: qué funcionalidades se esperan como software funcionando
+% TODO: qué queda explícitamente fuera de este sprint
+
+% -----------------------------------------------
+\subsection{Historias de Usuario Trabajadas}
+
+\begin{tcolorbox}[title=\textbf{HU-S1-01: Crear una clase virtual}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear una clase virtual con nombre, descripción y código de acceso, tal que mis estudiantes puedan unirse y acceder al material del curso.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item La clase debe registrarse correctamente en la base de datos con todos sus campos.
+    \item El sistema debe generar un código único de acceso de forma automática.
+    \item La clase creada debe ser visible en el panel principal del docente.
+\end{itemize}
+\textbf{Complejidad [X]:} 5 \hfill \textbf{Importancia [Y]:} 850 \hfill \textbf{Estimación [Z]:} 11 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-S1-02: Unirse a una clase mediante código de acceso}]
+\textbf{Historia:} \\
+Yo como estudiante, requiero unirme a una clase ingresando el código proporcionado por el docente, tal que pueda acceder a las tareas, materiales y anuncios del curso.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item El sistema debe validar que el código ingresado exista y esté activo.
+    \item El estudiante debe quedar registrado en la lista oficial de la clase.
+    \item Se debe mostrar retroalimentación clara: error si falla, redirección si es exitoso.
+\end{itemize}
+\textbf{Complejidad [X]:} 3 \hfill \textbf{Importancia [Y]:} 900 \hfill \textbf{Estimación [Z]:} 6.5 SP
+\end{tcolorbox}
+
+\vspace{0.5em}
+
+\begin{tcolorbox}[title=\textbf{HU-S1-03: Publicar una tarea con fecha de entrega}]
+\textbf{Historia:} \\
+Yo como docente, requiero crear y publicar tareas con instrucciones, archivos adjuntos y fecha límite, tal que los estudiantes sepan qué deben realizar y cuándo.
+
+\vspace{0.5em}
+\textbf{Criterios de aceptación:}
+\begin{itemize}
+    \item La tarea debe guardar correctamente el título, descripción, puntaje y fecha límite.
+    \item El sistema debe permitir la subida y almacenamiento seguro de archivos adjuntos.
+    \item Se debe disparar una notificación a los estudiantes inscritos tras la publicación.
+\end{itemize}
+\textbf{Complejidad [X]:} 7 \hfill \textbf{Importancia [Y]:} 950 \hfill \textbf{Estimación [Z]:} 17 SP
+\end{tcolorbox}
+
+\newpage
+
+% -----------------------------------------------
+\subsection{Desglose de Tasks por Historia de Usuario}
+
+A continuación se detallan las tareas técnicas derivadas de cada historia de usuario, con su estimación en Story Points y responsable asignado. El total del sprint es de \textbf{34.5 SP}.
+
+\subsubsection*{HU-S1-01: Crear una clase virtual \hfill \textnormal{[Total: 11 SP]}}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{8cm}|c|c|}
+\hline
+\textbf{Task} & \textbf{Descripción} & \textbf{SP} & \textbf{Responsable} \\
+\hline
+T1.1 & Crear tabla \texttt{classes} en la base de datos. & 1 & Brenda \\
+\hline
+T1.2 & Crear formulario HTML para nueva clase (nombre, descripción, imagen de portada). & 3 & Brenda \\
+\hline
+T1.3 & Implementar lógica de generación automática del código único de acceso. & 2 & Brenda \\
+\hline
+T1.4 & Crear endpoint \texttt{POST /classes} en el backend para registrar la clase en la BD. & 3 & Shamir \\
+\hline
+T1.5 & Mostrar la clase recién creada en el panel principal del docente. & 2 & Vale \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{HU-S1-02: Unirse a una clase mediante código \hfill \textnormal{[Total: 6.5 SP]}}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{8cm}|c|c|}
+\hline
+\textbf{Task} & \textbf{Descripción} & \textbf{SP} & \textbf{Responsable} \\
+\hline
+T2.1 & Diseñar pantalla con campo de entrada para el código de acceso. & 1 & Andre \\
+\hline
+T2.2 & Crear endpoint \texttt{POST /enrollments} para validar el código y registrar al estudiante. & 2 & Andre \\
+\hline
+T2.3 & Registrar la inscripción del estudiante en la tabla \texttt{enrollments}. & 2 & Andre \\
+\hline
+T2.4 & Mostrar mensaje de error claro si el código es inválido o inactivo. & 0.5 & Andre \\
+\hline
+T2.5 & Redirigir al estudiante a la vista del curso tras unirse exitosamente. & 1 & Andre \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{HU-S1-03: Publicar una tarea con fecha de entrega \hfill \textnormal{[Total: 17 SP]}}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|p{8cm}|c|c|}
+\hline
+\textbf{Task} & \textbf{Descripción} & \textbf{SP} & \textbf{Responsable} \\
+\hline
+T3.1 & Crear tabla \texttt{assignments} en la base de datos. & 2 & Vale \\
+\hline
+T3.2 & Crear formulario para publicar tarea (título, descripción, puntaje, fecha límite). & 3 & Adriana \\
+\hline
+T3.3 & Implementar subida y almacenamiento de archivos adjuntos. & 5 & Shamir \\
+\hline
+T3.4 & Crear endpoint \texttt{POST /assignments} en el backend para guardar la tarea en BD. & 3 & Vale \\
+\hline
+T3.5 & Enviar notificación por correo a los estudiantes inscritos al publicar la tarea. & 3 & Adriana \\
+\hline
+T3.6 & Validar campos obligatorios tanto en frontend como en backend. & 1 & Brenda \\
+\hline
+\end{tabular}
+\end{table}
+
+% -----------------------------------------------
+\subsection{Task Board — Estado Inicial del Sprint}
+
+Al inicio del sprint, las tareas fundacionales de base de datos se encuentran en progreso, mientras que el resto permanece pendiente.
+
+\vspace{0.8em}
+
+\renewcommand{\arraystretch}{1.2}
+\noindent
+\begin{tabularx}{\textwidth}{|>{\columncolor{todoCol}}Y|>{\columncolor{progCol}}Y|>{\columncolor{doneCol}}Y|}
+\hline
+\rowcolor{primary}
+\centering\textcolor{white}{\textbf{TO DO}} &
+\centering\textcolor{white}{\textbf{IN PROGRESS}} &
+\centering\arraybackslash\textcolor{white}{\textbf{DONE}} \\
+\hline
+
+\textbf{T1.2:} Formulario HTML crear clase \textit{(Brenda)}\newline
+\textbf{T1.3:} Lógica generación código \textit{(Brenda)}\newline
+\textbf{T1.4:} Endpoint POST clases \textit{(Shamir)}\newline
+\textbf{T1.5:} Mostrar clase en panel \textit{(Vale)}\newline
+\textbf{T2.2:} Endpoint validar + inscribir \textit{(Andre)}\newline
+\textbf{T2.3:} Registro en enrollments \textit{(Andre)}\newline
+\textbf{T2.4:} Mensaje error código \textit{(Andre)}\newline
+\textbf{T2.5:} Redirección tras inscripción \textit{(Andre)}\newline
+\textbf{T3.2:} Formulario publicar tarea \textit{(Adriana)}\newline
+\textbf{T3.3:} Subida de archivos adjuntos \textit{(Shamir)}\newline
+\textbf{T3.4:} Endpoint POST assignments \textit{(Vale)}\newline
+\textbf{T3.5:} Notificación por correo \textit{(Adriana)}\newline
+\textbf{T3.6:} Validación de campos \textit{(Brenda)}
+
+&
+\textbf{T1.1:} Tabla \texttt{classes} en BD \textit{(Brenda)}\newline\newline
+\textbf{T2.1:} Pantalla entrada de código \textit{(Andre)}\newline\newline
+\textbf{T3.1:} Tabla \texttt{assignments} en BD \textit{(Vale)}
+
+&
+\textit{(Sin items completados — Sprint recién iniciado)} \\ \hline
+\end{tabularx}
+
+% -----------------------------------------------
+\subsection{Burn Down Chart}
+
+El Sprint inició el \textbf{6 de abril de 2026}. El total de Story Points planificados es \textbf{34.5 SP}. Al día de elaboración de este documento no se han cerrado tasks, por lo que el esfuerzo restante real se mantiene al nivel inicial.
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=14cm, height=8cm,
+  title={\textbf{Burn Down Chart — Sprint 1 (Abril 2026)}},
+  xlabel={Día del Sprint},
+  ylabel={Story Points restantes},
+  xmin=1, xmax=8,
+  ymin=0, ymax=40,
+  xtick={1,2,3,4,5,6,7,8},
+  xticklabels={06/04, 07/04, 08/04, 09/04, 10/04, 11/04, 12/04, 13/04},
+  ytick={0, 10, 20, 30, 34.5, 40},
+  grid=both,
+  major grid style={line width=0.4pt, draw=gray!40},
+  legend style={at={(0.95,0.95)}, anchor=north east}
+]
+\addplot[dashed, color=lineblue, line width=1.2pt, mark=*] coordinates {
+  (1, 34.5) (8, 0)
+};
+\addlegendentry{Línea ideal}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+% -----------------------------------------------
+\subsection{Seguimiento Diario del Task Board}
+
+En esta sección se registra el estado general del tablero Kanban del equipo
+durante el Sprint 1, con el objetivo de evidenciar la evolución diaria del
+trabajo y su relación con el avance del sprint.
+
+\begin{longtable}{|p{1.5cm}|p{3cm}|p{1.5cm}|p{2cm}|p{1.5cm}|p{3cm}|}
+\hline
+\textbf{Día} & \textbf{Captura} & \textbf{To Do} & \textbf{In Progress} & \textbf{Done} & \textbf{Observación} \\
+\hline
+Día 1 & {[captura]} & 13 & 3 & 0 & Inicio del sprint. Se comenzaron las tareas fundacionales de base de datos y maquetación inicial. \\
+\hline
+Día 2 & {[captura]} & 11 & 4 & 1 & Se completó una task de base de datos y se avanzó en formularios y validaciones. \\
+\hline
+Día 3 & {[captura]} & ... & ... & ... & ... \\
+\hline
+\end{longtable}
+%grupal
+
+
+% -----------------------------------------------
+\subsection{Estado Diario de Tasks}
+
+En esta sección se registra el avance diario de las tasks del Sprint 1,
+identificando responsable, estado y observaciones relevantes del trabajo
+realizado.
+
+\begin{longtable}{|p{1.5cm}|p{2cm}|p{2.5cm}|p{2cm}|p{5cm}|}
+\hline
+\textbf{Día} & \textbf{Task} & \textbf{Responsable} & \textbf{Estado} & \textbf{Observación} \\
+\hline
+Día 1 & T1.1 & Brenda & In Progress & Se inició la creación de la tabla \texttt{classes} en la base de datos. \\
+\hline
+Día 1 & T2.1 & Andre & In Progress & Se comenzó la maquetación de la pantalla para ingresar el código de acceso. \\
+\hline
+Día 1 & T3.1 & Vale & In Progress & Se inició el diseño de la tabla \texttt{assignments}. \\
+\hline
+Día 2 & T1.1 & Brenda & Done & La tabla \texttt{classes} fue creada y verificada en la base de datos. \\
+\hline
+Día 2 & T1.2 & Brenda & In Progress & Se avanzó en el formulario HTML para crear una nueva clase. \\
+\hline
+Día 2 & T2.2 & Andre & In Progress & Se inició la implementación del endpoint para validación de código. \\
+\hline
+\end{longtable}
+%individual
+
+
+% -----------------------------------------------
+\subsection{Registro de Daily Scrums}
+
+En esta sección se documentan los Daily Scrums realizados durante el sprint,
+registrando impedimentos detectados y decisiones tomadas por el equipo.
+
+\textbf{Daily Scrum — 07/04/2026}
+
+\begin{longtable}{|p{6cm}|p{7cm}|}
+\hline
+\textbf{Impedimento / Tema} & \textbf{Decisión tomada} \\
+\hline
+No se habían definido los nombres finales de tablas y atributos. & Se acordó usar nombres técnicos en inglés y mantener consistencia entre frontend, backend y base de datos. \\
+\hline
+Existía duda sobre la estructura del frontend para las tres HU del sprint. & Se definió una estructura simple con HTML por vista, un archivo CSS principal y scripts separados por módulo funcional. \\
+\hline
+\end{longtable}
+
+% -----------------------------------------------
+\subsection{Registro de Decisiones del Sprint}
+
+\begin{longtable}{|p{2.5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Fecha} & \textbf{Problema / Contexto} & \textbf{Decisión tomada} \\
+\hline
+06/04/2026 & La estructura inicial del repositorio estaba organizada por integrante. & Se redefinió la estructura del proyecto por capas funcionales: frontend, backend y base de datos. \\
+\hline
+06/04/2026 & No existía una convención uniforme para tablas, atributos y rutas. & Se acordó utilizar inglés para nombres técnicos del sistema y mantener consistencia en toda la implementación. \\
+\hline
+07/04/2026 & No estaba claro cómo registrar evidencias y avance diario del sprint. & Se definió usar seguimiento diario del task board, estado diario de tasks, reporte de commits y evidencias por task. \\
+\hline
+\end{longtable}
+
+% -----------------------------------------------
+\subsection{Desarrollo Técnico Realizado}
+% -----------------------------------------------
+
+% TODO: describir el trabajo técnico ejecutado durante el sprint
+
+\begin{itemize}
+    \item \textbf{Funcionalidades implementadas:} % TODO
+    \item \textbf{Vistas e interfaces desarrolladas:} % TODO
+    \item \textbf{Lógica de backend implementada:} % TODO
+    \item \textbf{Scripts y consultas de base de datos:} % TODO
+    \item \textbf{Distribución de trabajo por integrante:} % TODO
+    \item \textbf{Estado funcional al cierre del sprint:} % TODO
+\end{itemize}
+
+
+
+%---------------------------------------------
+\subsection{Arquitectura y Diagramas Actualizados}
+
+En esta sección se presentarán las actualizaciones realizadas sobre la
+arquitectura y los diagramas definidos en el Sprint 0, en caso de que el
+desarrollo del Sprint 1 haya requerido modificaciones en la estructura del
+sistema, el modelo de datos o la organización técnica del proyecto.
+
+% TODO: incluir cambios respecto a la arquitectura inicial si corresponde
+% TODO: actualizar modelo de datos o diagramas en caso de modificación
+% -----------------------------------------------
+\subsection{Evidencias por Task}
+
+En esta sección se presentan las evidencias funcionales de las tasks
+desarrolladas por cada integrante del equipo durante el Sprint 1. La
+organización se realiza por responsable, con el fin de facilitar la revisión
+del avance individual y la verificación del criterio de Done.
+
+\subsubsection*{Brenda}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Task} & T1.1 --- Crear tabla \texttt{classes} en la base de datos \\
+\hline
+\textbf{Descripción del avance} & Se implementó la tabla \texttt{classes} en PostgreSQL mediante Supabase, incluyendo los campos definidos para el Sprint 1. \\
+\hline
+\textbf{Estado} & Done \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Evidencia:}
+\begin{figure}[H]
+    %poner imagen
+    \centering
+    %\includegraphics[width=0.8\textwidth]{evidencia_t1_1.png}
+    \caption{Tabla \texttt{classes} creada en la base de datos}
+\end{figure}
+
+\textbf{Criterio de Done verificado:}
+\begin{itemize}
+    \item compila sin errores;
+    \item está integrado al repositorio;
+    \item cumple con el estándar técnico acordado;
+    \item cuenta con evidencia funcional;
+    \item fue incorporado al entorno común.
+\end{itemize}
+
+\vspace{0.7cm}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Task} & T1.2 --- Crear formulario HTML para nueva clase \\
+\hline
+\textbf{Descripción del avance} & Se implementó la estructura inicial del formulario HTML para registrar una nueva clase, incluyendo nombre, descripción e imagen de portada. \\
+\hline
+\textbf{Estado} & In Progress \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Evidencia:}
+\begin{figure}[H]
+    %poner imagen
+    \centering
+    %\includegraphics[width=0.8\textwidth]{evidencia_t1_2.png}
+    \caption{Avance inicial del formulario para crear clase}
+\end{figure}
+% -----------------------------------------------
+\subsection{Reporte de Commits en Git}
+
+En esta sección se registra el avance diario del trabajo realizado por cada
+integrante del equipo a partir del historial de commits del repositorio.
+
+\begin{longtable}{|p{2cm}|p{2.5cm}|p{2cm}|p{6cm}|}
+\hline
+\textbf{Fecha} & \textbf{Integrante} & \textbf{N° Commits} & \textbf{Descripción resumida} \\
+\hline
+07/04/2026 & Brenda & 2 & Creación de tabla \texttt{classes} y avance inicial del formulario para nueva clase. \\
+\hline
+07/04/2026 & Andre & 1 & Maquetación de la pantalla para unirse mediante código. \\
+\hline
+07/04/2026 & Vale & 1 & Diseño inicial de la tabla \texttt{assignments}. \\
+\hline
+\end{longtable}
+
+\textbf{Evidencia del historial de commits del día}
+
+\begin{figure}[H]
+    %poner imagen
+    \centering
+    %\includegraphics[width=0.9\textwidth]{}
+    \caption{Historial de commits correspondiente al avance registrado en el día 1 del sprint}
+\end{figure}
+
+
+% -----------------------------------------------
+\subsection{Validación del Definition of Done}
+
+\begin{longtable}{|p{1.5cm}|p{1.5cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}|p{1.5cm}|}
+\hline
+\textbf{Task} & \textbf{Compila} & \textbf{En repo} & \textbf{Estándar} & \textbf{Evidencia} & \textbf{Integrado} & \textbf{Done} \\
+\hline
+T1.1 & Sí & Sí & Sí & Sí & Sí & Sí \\
+\hline
+T2.1 & Sí & Sí & Sí & Sí & No & No \\
+\hline
+T3.1 & Sí & Sí & Sí & Sí & No & No \\
+\hline
+\end{longtable}
+% -----------------------------------------------
+\subsection{Resultado del Sprint}
+
+\begin{itemize}
+    \item \textbf{Funcionalidades completadas:} % TODO
+    \item \textbf{Software funcionando al cierre:} % TODO
+    \item \textbf{Trabajo no completado y motivo:} % TODO
+    \item \textbf{Story Points planificados:} 34.5 SP
+    \item \textbf{Story Points completados:} % TODO
+    \item \textbf{Alfajores planificados:} % TODO
+    \item \textbf{Alfajores completados:} % TODO
+\end{itemize}
+
+\end{document}
