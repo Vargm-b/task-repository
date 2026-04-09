@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Clase</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Crear Clase</h1>
+        <p>Completa el formulario para crear una nueva clase.</p>
+    </header>
+
+    <main>
+        <section aria-labelledby="create-class-title">
+            <h2 id="create-class-title">Formulario de Creación de Clase</h2>
+            <form id="createClassForm">
+                <div>
+                    <label for="className">Nombre de la Clase</label>
+                    <input
+                        type="text"
+                        id="className"
+                        name="className"
+                        placeholder="Ej. Sistemas de Información II"
+                    >
+                </div>
+
+                <div>
+                    <label for="classDescription">Descripción de la Clase</label>
+                    <textarea
+                        id="classDescription"
+                        name="classDescription"
+                        placeholder="Describe brevemente la clase..."
+                    ></textarea>
+                </div>
+
+                <div>
+                    <label for="classImage">Imagen de portada</label>
+                    <input
+                        type="file"
+                        id="classImage"
+                        name="classImage"
+                        accept=".png, .jpg, .jpeg"
+                    >
+                </div>
+
+                <div>
+                    <button type="reset">Cancelar</button>
+                    <button type="submit">Crear Clase</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../scripts/classes.js"></script>
+</body>
+</html>
