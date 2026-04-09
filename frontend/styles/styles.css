@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Base styles — shared across all views
+   Based on UI standards defined in docs/main.tex (Sprint 0)
+   ========================================================================== */
+
+:root {
+  /* Color palette */
+  --color-bg: #F3F2EE;
+  --color-primary: #578387;
+  --color-primary-hover: #486e72;
+  --color-secondary: #798697;
+  --color-error: #B24C4C;
+  --color-surface: #FFFFFF;
+  --color-border: #D5D3CC;
+  --color-text: #1F2A2C;
+  --color-text-muted: #798697;
+
+  /* Typography */
+  --font-heading: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-body: 'Roboto', system-ui, sans-serif;
+
+  --fs-title: 32px;
+  --fs-subtitle: 20px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+
+  /* Spacing (multiples of 4px) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* Borders */
+  --border-width: 1px;
+  --border-radius: 8px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+/* ---------- Layout ---------- */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-4);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--sp-8);
+}
+
+.page-title {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  margin-bottom: var(--sp-2);
+}
+
+.page-subtitle {
+  font-size: var(--fs-body);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--sp-6) 0;
+}
+
+/* ---------- Forms ---------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  flex: 1;
+}
+
+.form-row {
+  display: flex;
+  gap: var(--sp-4);
+}
+
+.form-label {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.form-input {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--sp-3) var(--sp-4);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+  border-color: var(--color-error);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.form-file {
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.form-hint {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Buttons ---------- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-secondary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .card {
+    padding: var(--sp-5);
+  }
+
+  .page {
+    padding: var(--sp-5) var(--sp-3);
+  }
+}
