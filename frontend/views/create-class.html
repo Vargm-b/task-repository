@@ -3,52 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Clase</title>
+    <title>Crear clase virtual</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
-<body>
-    <header>
-        <h1>Crear Clase</h1>
-        <p>Completa el formulario para crear una nueva clase.</p>
-    </header>
+<body class="layout">
+    <aside class="sidebar">
+        <header class="brand">
+            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <h2>TR</h2>
+        </header>
 
-    <main>
-        <section aria-labelledby="create-class-title">
-            <h2 id="create-class-title">Formulario de Creación de Clase</h2>
-            <form id="createClassForm">
-                <div>
-                    <label for="className">Nombre de la Clase</label>
-                    <input
-                        type="text"
-                        id="className"
-                        name="className"
-                        placeholder="Ej. Sistemas de Información II"
-                    >
-                </div>
+        <nav aria-label="Menú principal">
+            <ul class="menu">
+                <li><a href="#">Actividad</a></li>
+                <li><a href="#" class="active">Equipos</a></li>
+                <li><a href="#">Tareas</a></li>
+                <li><a href="#">Calendario</a></li>
+            </ul>
+        </nav>
 
-                <div>
-                    <label for="classDescription">Descripción de la Clase</label>
-                    <textarea
-                        id="classDescription"
-                        name="classDescription"
-                        placeholder="Describe brevemente la clase..."
-                    ></textarea>
-                </div>
+        <footer class="sidebar-footer">
+            <button type="button" class="new-class-button">Nueva clase</button>
+        </footer>
+    </aside>
 
-                <div>
-                    <label for="classImage">Imagen de portada</label>
-                    <input
-                        type="file"
-                        id="classImage"
-                        name="classImage"
-                        accept=".png, .jpg, .jpeg"
-                    >
-                </div>
+    <main class="page">
+        <header class="topbar">
+            <h1>Task Repository</h1>
+        </header>
 
-                <div>
-                    <button type="reset">Cancelar</button>
-                    <button type="submit">Crear clase</button>
-                </div>
+        <section class="create-class-section" aria-labelledby="create-class-title">
+            <p class="breadcrumb">Portal / Equipos / Nueva clase</p>
+
+            <h2 id="create-class-title">Crear clase virtual</h2>
+
+            <form id="createClassForm" class="form-card">
+                <label for="className">Nombre de la clase</label>
+                <input
+                    type="text"
+                    id="className"
+                    name="className"
+                    placeholder="Ej. Sistemas de Información II"
+                >
+
+                <label for="classDescription">Descripción</label>
+                <textarea
+                    id="classDescription"
+                    name="classDescription"
+                    placeholder="Describe brevemente la clase..."
+                ></textarea>
+
+                <footer class="form-actions">
+                    <button type="reset" class="cancel-button">Cancelar</button>
+                    <button type="submit" class="submit-button">Crear clase</button>
+                </footer>
             </form>
         </section>
     </main>
