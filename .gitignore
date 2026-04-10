@@ -1,7 +1,7 @@
 
 node_modules/
 
-backend/.env
+.env
 backend/uploads/
 
 docs/*.aux
