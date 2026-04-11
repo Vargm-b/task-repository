@@ -17,7 +17,7 @@ async function generateUniqueAccessCode() {
         attemps++;
         if(!/^[A-Z0-9]{6}$/.test(accessCode)) continue;
         const result = await pool.query(
-            'SELECT id FROM classes WHERE access_code = $1 LIMIT 1', [accessCode]
+            'SELECT id FROM virtual_class WHERE access_code = $1 LIMIT 1', [accessCode]
         );
         exists = result.rows.length > 0;
     }
@@ -28,7 +28,7 @@ async function createClass({name, description, teacher_id}){
     if(!name || !name.trim() || !teacher_id || teacher_id == 0) throw new Error('Invalid name or teacher_id');
     const access_code = await generateUniqueAccessCode();
     const result = await pool.query(
-        `INSERT INTO classes (name, description, access_code, teacher_id)
+        `INSERT INTO virtual_class (name, description, access_code, teacher_id)
         VALUES ($1, $2, $3, $4)
         RETURNING *`,
         [name, description || null, access_code, teacher_id]
