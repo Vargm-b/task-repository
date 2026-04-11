@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicar tarea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <h1 class="page-title">Publicar tarea</h1>
+      <p class="page-subtitle">Complete los datos para crear y publicar una nueva tarea en su clase.</p>
+
+      <form id="create-assignment-form" class="form" novalidate>
+        <div class="form-field">
+          <label for="class-id" class="form-label">Clase</label>
+          <select id="class-id" name="classId" class="form-input" required>
+            <option value="" disabled selected>Seleccione una clase</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="title" class="form-label">Título</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-input"
+            placeholder="Ej. Informe de laboratorio 1"
+            maxlength="120"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="description" class="form-label">Descripción / instrucciones</label>
+          <textarea
+            id="description"
+            name="description"
+            class="form-input form-textarea"
+            placeholder="Describe brevemente las instrucciones de la tarea"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="max-score" class="form-label">Puntaje máximo</label>
+            <input
+              type="number"
+              id="max-score"
+              name="maxScore"
+              class="form-input"
+              min="1"
+              max="100"
+              step="1"
+              placeholder="100"
+              required
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="due-date" class="form-label">Fecha y hora límite</label>
+            <input
+              type="datetime-local"
+              id="due-date"
+              name="dueDate"
+              class="form-input"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="attachment" class="form-label">Archivo adjunto <span class="form-hint">(opcional)</span></label>
+          <input
+            type="file"
+            id="attachment"
+            name="attachment"
+            class="form-input form-file"
+            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+          >
+          <small class="form-hint">Formatos permitidos: PDF, Word, imágenes.</small>
+        </div>
+
+        <div class="form-actions">
+          <button type="reset" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Publicar tarea</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="../scripts/assignments.js"></script>
+</body>
+</html>
