@@ -2,54 +2,75 @@
 
 ## T11.4 — Guardar clase y código en la base de datos (Valentina)
 
-Descripción:
-- Objetivo: Implementar el endpoint que recibe una clase (nombre, descripción), genera un código de acceso único y guarda la fila en la tabla `clases_valentina` en Supabase/Postgres.
+Descripción breve:
+- Objetivo: Endpoint para crear una clase y guardar un código de acceso único en la base de datos.
 
-Archivos relevantes:
-- `valentina/backend/crear_tabla.js` — script que crea la tabla `clases_valentina`.
-- `valentina/backend/server.js` — servidor Express con los endpoints:
-	- `GET /clases` — listar clases.
-	- `POST /api/clases` — crear clase y generar `codigo_acceso`.
-- `valentina/backend/delete_test.js` — helper para eliminar registros de prueba.
-- `.env` (local) — contiene credenciales; NO subirlo al repositorio.
+Implementación actual (código usado por el servidor)
+- Endpoint: `POST /api/classes`
+- Flujo: `backend/src/modules/classes/class.controller.js` → `class.service.js` → inserción en la tabla `classes`.
+- Campos esperados en el body (JSON):
+	- `name` (string) — obligatorio
+	- `teacher_id` (number) — obligatorio
+	- `description` (string) — opcional
+- Comportamiento: el backend genera un `access_code` único (6 caracteres alfanuméricos en mayúsculas) y lo guarda en la columna `access_code` de la tabla `classes`. La respuesta es el objeto de la fila creada (código HTTP `201`).
 
-Demo (guion de 4 pasos para compartir pantalla):
-1. Iniciar servidor:
+Demo rápido (pasos para compartir pantalla)
+1. Iniciar el servidor:
 ```powershell
-cd valentina/backend
-node server.js
+cd <ruta-del-repo>
+node backend/src/server.js
 ```
-2. Enviar datos de prueba (simular frontend):
+2. Crear una clase (PowerShell):
 ```powershell
-$body = @{nombre='ClaseDePrueba'; descripcion='Demostración T11.4'} | ConvertTo-Json
-Invoke-RestMethod -Uri 'http://localhost:3000/api/clases' -Method Post -ContentType 'application/json' -Body $body
+$body = @{name='ClaseDePrueba'; description='Demostración T11.4'; teacher_id=1} | ConvertTo-Json
+Invoke-RestMethod -Uri 'http://localhost:3000/api/classes' -Method Post -ContentType 'application/json' -Body $body
 ```
-3. Mostrar el resultado en la terminal: buscar `status: "success"`, `data.id` y `data.codigo_acceso`.
-4. (Opcional) Abrir el panel de Supabase y mostrar la tabla `clases_valentina` para confirmar la inserción.
-
-Comandos útiles:
-- Listar clases (GET):
-```powershell
-Invoke-RestMethod -Uri 'http://localhost:3000/clases' -Method Get | ConvertTo-Json -Depth 5
-```
-- Borrar registro de prueba (helper):
+o con `curl`:
 ```bash
-node valentina/backend/delete_test.js <id_o_codigo_acceso>
+curl -X POST http://localhost:3000/api/classes -H "Content-Type: application/json" -d '{"name":"ClaseDePrueba","description":"Demostración T11.4","teacher_id":1}'
+```
+3. Resultado esperado (ejemplo):
+```json
+{
+	"id": 42,
+	"name": "ClaseDePrueba",
+	"description": "Demostración T11.4",
+	"access_code": "A1B2C3",
+	"teacher_id": 1,
+	"created_at": "2026-04-11T12:34:56.000Z"
+}
+```
+4. Verificar en la base de datos:
+```sql
+SELECT * FROM classes WHERE id = 42;
 ```
 
-Notas para el repo / seguridad:
-- Asegúrate de que `.env` está en `.gitignore`. No subir credenciales públicas.
-- Si `.env` ya fue pusheado, rota las credenciales en Supabase de inmediato.
+Tabla de ejemplo (Postgres):
+```sql
+CREATE TABLE classes (
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+	description TEXT,
+	access_code VARCHAR(32) UNIQUE,
+	teacher_id INTEGER,
+	created_at TIMESTAMP DEFAULT NOW()
+);
+```
 
-Workflow Git recomendado:
-- Crear rama por tarea: `git checkout -b mi-rama-t11.4`
-- Añadir solo los archivos de código/documentación (no `.env`):
+Notas importantes y recomendaciones
+- Archivos clave: [backend/src/modules/classes/class.controller.js](backend/src/modules/classes/class.controller.js) y [backend/src/modules/classes/class.service.js](backend/src/modules/classes/class.service.js).
+- Observación: existe también `backend/src/modules/classes/class.model.js` que contiene una función `createClass` alternativa y apunta a la tabla `virtual_class`; actualmente el controlador utiliza `class.service.js` (la implementación activa). Si quieres que la capa de datos esté aislada en `class.model.js`, puedo ayudarte a refactorizar `class.service.js` para usar `class.model.js`.
+- Variables de entorno necesarias: `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_NAME`, `DB_PORT` (y `DB_SSL` si aplica). Asegúrate de no subir `.env`.
+- Evidencia de avance (sprint): antes de limpiar ramas crea una rama de backup y haz `git push` para conservar los commits diarios (esto preserva las fechas/commits que necesitas para la bitácora).
+
+Workflow Git recomendado (resumen)
+- Crear rama por tarea desde `main`:
 ```bash
-git add valentina/backend/crear_tabla.js valentina/backend/server.js valentina/backend/delete_test.js README.md
-git commit -m "T11.4: POST /api/clases + crear_tabla + helper de prueba"
-git push -u origin mi-rama-t11.4
+git checkout main
+git pull origin main
+git checkout -b valentina-T11.4
 ```
+- Añadir solo los cambios relevantes y hacer `commit` / `push`.
 
-Próximas tareas:
-- En este README se irán agregando secciones para cada task completada (por ejemplo: `T07.1`, etc.).
+
 
