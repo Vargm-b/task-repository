@@ -1,0 +1,14 @@
+{
+  "name": "task-repository",
+  "version": "1.0.0",
+  "description": "Plataforma web academica de gestion de tareas",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "node backend/src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "17.2.1",
+    "express": "5.1.0",
+    "pg": "8.16.3"
+  }
+}

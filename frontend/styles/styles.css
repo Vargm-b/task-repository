@@ -18,7 +18,8 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--text);
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* sidebar */
@@ -95,8 +96,17 @@ body {
     padding: 24px;
 }
 
+.page-form {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .topbar {
     margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .topbar h1 {
@@ -106,8 +116,9 @@ body {
     color: var(--primary);
 }
 
-/* section */
-.create-class-section {
+/* sections */
+.create-class-section,
+.assignment-list-section {
     max-width: 880px;
     margin: 0 auto;
 }
@@ -126,13 +137,49 @@ body {
     color: var(--primary);
 }
 
+.assignment-form-section .breadcrumb {
+    margin-bottom: 8px;
+}
+
+.assignment-form-section h2 {
+    margin-bottom: 8px;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.assignment-form-section p {
+    margin-top: 0;
+}
+
+.scrollable-section {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    padding-right: 8px;
+}
+
+/* scroll */
+.scrollable-section::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scrollable-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollable-section::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 2px;
+}
+
 /* form */
 .form-card {
     background-color: var(--white);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
-
     display: flex;
     flex-direction: column;
 }
@@ -149,7 +196,8 @@ body {
 }
 
 .form-card input,
-.form-card textarea {
+.form-card textarea,
+.form-card select {
     width: 100%;
     padding: 12px 16px;
     font-size: 16px;
@@ -163,6 +211,34 @@ body {
 .form-card textarea {
     min-height: 140px;
     resize: none;
+}
+
+/* form row */
+.form-row {
+    display: flex;
+    gap: 16px;
+    border: none;
+    padding: 0;
+    margin: 16px 0 0 0;
+}
+
+.form-row p {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 16px;
+    color: var(--secondary);
+}
+
+.form-row p input {
+  width: 100%;
+}
+
+/* hint */
+.form-hint {
+    font-size: 14px;
+    color: var(--secondary);
 }
 
 /* actions */
@@ -180,6 +256,7 @@ body {
     font-family: 'Roboto', sans-serif;
     border-radius: 8px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .cancel-button {
