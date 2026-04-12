@@ -18,7 +18,6 @@
                 <li><a href="#">Actividad</a></li>
                 <li><a href="#">Equipos</a></li>
                 <li><a href="#" class="active" aria-current="page">Tareas</a></li>
-                <li><a href="#">Calendario</a></li>
             </ul>
         </nav>
 
@@ -27,17 +26,21 @@
         </footer>
     </aside>
 
-    <main class="page">
+    <main class="page page-form">
         <header class="topbar">
             <h1>Task Repository</h1>
+
+            <nav aria-label="Acciones">
+                <a href="./create-assignment.html" class="submit-button">Nueva tarea</a>
+            </nav>
         </header>
 
-        <section class="assignment-list-section" aria-labelledby="assignment-list-title">
-            <p class="breadcrumb">Portal / Mis Deberes / Tareas</p>
-            <h2 id="assignment-list-title">Lista de Tareas</h2>
+        <section class="assignment-list-section scrollable-section" aria-labelledby="assignment-list-title">
+            <p class="breadcrumb">Portal / Tareas</p>
+            <h2 id="assignment-list-title">Lista de tareas</h2>
 
-            <section aria-label="Listado de tareas">
-                <p class="empty-state">No hay tareas aún.</p>
+            <section class="assignment-list" aria-label="Listado de tareas" id="assignment-list">
+                <p class="empty-state" id="assignment-empty-state">No hay tareas aún.</p>
             </section>
         </section>
     </main>
