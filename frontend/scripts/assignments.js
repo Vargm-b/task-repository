@@ -74,6 +74,47 @@ const renderAssignments = (assignments) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // TODO: fetch().
-    renderAssignments(mockAssignments);
+    const listContainer = document.getElementById('assignments-container');
+    if (listContainer) {
+        // TODO: reemplazar el mock con fetch() cuando la ruta GET esté lista
+        renderAssignments(mockAssignments);
+    }
+
+    const createForm = document.getElementById('create-assignment-form');
+    if (createForm) {
+        createForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+
+            formData.append('class_id', document.getElementById('class-id').value);
+            formData.append('title', document.getElementById('title').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('max_score', document.getElementById('max-score').value);
+            formData.append('due_date', document.getElementById('due-date').value);
+
+            const fileInput = document.getElementById('attachment');
+            if (fileInput.files.length > 0) {
+                formData.append('attachment', fileInput.files[0]);
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/assignments', {
+                    method: 'POST',
+                    body: formData 
+                });
+
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Error al guardar en el servidor');
+                }
+
+                alert('¡Tarea publicada exitosamente y notificaciones enviadas!');
+                window.location.href = './assignment-list.html'; 
+                
+            } catch (error) {
+                console.error('Error de red o servidor:', error);
+                alert('Hubo un problema al publicar la tarea: ' + error.message);
+            }
+        });
+    }
 });
