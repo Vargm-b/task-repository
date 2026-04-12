@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body class="layout">
+    <aside class="sidebar">
+        <header class="brand">
+            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <h2>TR</h2>
+        </header>
+
+        <nav aria-label="Menú principal">
+            <ul class="menu">
+                <li>
+                    <a href="#" aria-disabled="true">
+                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <span>Actividad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./class-dashboard.html">
+                        <img src="../assets/contact-gray.svg" alt="" class="menu-icon">
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assignment-list.html" class="active" aria-current="page">
+                        <img src="../assets/task-green.svg" alt="" class="menu-icon">
+                        <span>Tareas</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <a href="create-assignment.html">
+                <button type="button" class="new-class-button">Nueva Tarea</button>
+            </a>
+        </footer>
+    </aside>
+
+    <main class="page page-form">
+        <header class="topbar">
+            <h1>Task Repository</h1>
+        </header>
+
+        <section class="assignment-list-section scrollable-section" aria-labelledby="assignment-list-title">
+            <p class="breadcrumb">Portal / Tareas</p>
+            <h2 id="assignment-list-title">Lista de tareas</h2>
+
+            <section class="assignment-list" aria-label="Listado de tareas" id="assignment-list">
+                <p class="empty-state" id="assignment-empty-state" hidden>Aún no hay tareas disponibles.</p>
+            </section>
+        </section>
+    </main>
+
+    <script src="../scripts/assignments.js"></script>
+</body>
+</html>
