@@ -20,5 +20,35 @@ async function createAssignment({ class_id, title, description, max_score, due_d
     );
     return result.rows[0];
 }
+// Nueva función para obtener el detalle de una tarea con validación de acceso
+async function getAssignmentDetail(assignment_id, student_id) {
+    if (!assignment_id || !student_id) throw new Error('assignment_id and student_id are required');
 
-module.exports = { createAssignment };
+    // 1. Obtenemos la tarea y de paso sabemos a qué clase pertenece
+    const assignmentResult = await pool.query(
+        'SELECT * FROM assignment WHERE id = $1',
+        [assignment_id]
+    );
+
+    if (assignmentResult.rows.length === 0) {
+        throw new Error('Assignment not found');
+    }
+
+    const assignment = assignmentResult.rows[0];
+
+    // 2. Validamos la restricción: ¿El estudiante está inscrito en esta clase?
+    const enrollmentResult = await pool.query(
+        'SELECT id FROM enrollment WHERE class_id = $1 AND student_id = $2',
+        [assignment.class_id, student_id]
+    );
+
+    if (enrollmentResult.rows.length === 0) {
+        // Error de seguridad si no pertenece a la clase
+        throw new Error('Access denied: You are not enrolled in this class');
+    }
+
+    // 3. Si todo está bien, devolvemos el detalle de la tarea
+    return assignment;
+}
+
+module.exports = { createAssignment, getAssignmentDetail };
