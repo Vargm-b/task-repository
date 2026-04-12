@@ -22,27 +22,24 @@ node backend/src/server.js
 ```
 2. Crear una clase (PowerShell):
 ```powershell
-$body = @{name='ClaseDePrueba'; description='Demostración T11.4'; teacher_id=1} | ConvertTo-Json
+$body = @{name='Mathematics'; description='T11.4 Integration Test'; teacher_id=2e0c5648-fcb2-4417-9309-c4f57f82f5a5} | ConvertTo-Json
 Invoke-RestMethod -Uri 'http://localhost:3000/api/classes' -Method Post -ContentType 'application/json' -Body $body
 ```
-o con `curl`:
-```bash
-curl -X POST http://localhost:3000/api/classes -H "Content-Type: application/json" -d '{"name":"ClaseDePrueba","description":"Demostración T11.4","teacher_id":1}'
-```
+
 3. Resultado esperado (ejemplo):
 ```json
 {
-	"id": 42,
-	"name": "ClaseDePrueba",
-	"description": "Demostración T11.4",
-	"access_code": "A1B2C3",
-	"teacher_id": 1,
+	"id": "7a4a0bfc-5dc7-4b23-bf0a-bb887c0f6695",
+	"name": "Mathematics",
+	"description": "T11.4 Integration Test",
+	"access_code": "G7J015",
+	"teacher_id": "2e0c5648-fcb2-4417-9309-c4f57f82f5a5",
 	"created_at": "2026-04-11T12:34:56.000Z"
 }
 ```
 4. Verificar en la base de datos:
 ```sql
-SELECT * FROM classes WHERE id = 42;
+SELECT * FROM classes WHERE id = 7a4a0bfc-5dc7-4b23-bf0a-bb887c0f6695;
 ```
 
 Tabla de ejemplo (Postgres):
