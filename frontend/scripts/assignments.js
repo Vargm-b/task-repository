@@ -84,8 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (createForm) {
         createForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData();
 
+            const publishBtn = e.submitter || createForm.querySelector('button[type="submit"]');
+            
+            // BLOQUEO
+            publishBtn.disabled = true;
+            const originalText = publishBtn.innerText;
+            publishBtn.innerText = 'Publicando...';
+
+            const formData = new FormData();
             formData.append('class_id', document.getElementById('class-id').value);
             formData.append('title', document.getElementById('title').value);
             formData.append('description', document.getElementById('description').value);
@@ -114,6 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Error de red o servidor:', error);
                 alert('Hubo un problema al publicar la tarea: ' + error.message);
+                
+                // REHABILITAR
+                publishBtn.disabled = false;
+                publishBtn.innerText = originalText;
             }
         });
     }
