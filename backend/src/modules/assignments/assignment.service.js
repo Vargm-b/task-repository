@@ -13,7 +13,7 @@ async function createAssignment({ class_id, title, description, max_score, due_d
     if(dueDateObj <= new Date()) throw new Error('due_date must be in the future');
 
     const result = await pool.query(
-        `INSERT INTO assignments (class_id, title, description, max_score, due_date)
+        `INSERT INTO assignment (class_id, title, description, max_score, due_date)
         VALUES ($1, $2, $3, $4, $5)
         RETURNING *`,
         [class_id, title.trim(), description.trim(), max_score, dueDateObj]
@@ -21,4 +21,20 @@ async function createAssignment({ class_id, title, description, max_score, due_d
     return result.rows[0];
 }
 
-module.exports = { createAssignment };
+async function getAssignmentById(id){
+    if(!id){
+        throw new Error('Assignment id  is required');
+    }
+
+    const result = await pool.query(
+        'SELECT id, title, description, due_date FROM assignment WHERE id = $1',
+        [id]
+    );
+
+    if(result.rows.length === 0){
+        throw new Error('Assignment not found');
+    }
+    return result.rows[0];
+}
+
+module.exports = {getAssignmentById, createAssignment };
