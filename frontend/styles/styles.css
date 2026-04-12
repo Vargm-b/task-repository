@@ -112,6 +112,69 @@ body {
     overflow: hidden;
 }
 
+/* dashboard */
+.page-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.class-dashboard-section {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.class-dashboard-section h2 {
+    margin: 0 0 24px 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.class-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.class-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.class-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.class-card-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.class-card-body {
+    padding: 14px 16px;
+}
+
+.class-card-body h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* topbar */
 .topbar {
     margin-bottom: 24px;
     display: flex;
