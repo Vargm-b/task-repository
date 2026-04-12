@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de tarea</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body class="layout">
+    <aside class="sidebar">
+        <header class="brand">
+            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <h2>TR</h2>
+        </header>
+
+        <nav aria-label="Menú principal">
+            <ul class="menu">
+                <li>
+                    <a>
+                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <span>Actividad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./class-dashboard.html">
+                        <img src="../assets/contact-gray.svg" alt="" class="menu-icon">
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assignment-list.html" class="active" aria-current="page">
+                        <img src="../assets/task-green.svg" alt="" class="menu-icon">
+                        <span>Tareas</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <a href="./create-class.html">
+                <button type="button" class="new-class-button">Nueva Tarea</button>
+            </a>
+        </footer>
+    </aside>
+
+    <main class="page page-detail">
+        <header class="topbar">
+            <h1>Task Repository</h1>
+        </header>
+
+        <section class="scrollable-section">
+            <section class="assignment-detail-section" aria-labelledby="assignment-detail-title">
+                <p class="breadcrumb">Portal / Tareas / Detalle</p>
+
+                <p class="detail-course-name" id="assignmentCourse">
+                    Cargando curso...
+                </p>
+
+                <h2 id="assignment-detail-title">Cargando tarea...</h2>
+
+                <article class="assignment-detail-card">
+                    <section class="assignment-detail-block" aria-labelledby="assignment-description-title">
+                        <h3 id="assignment-description-title">Descripción del proyecto</h3>
+                        <p id="assignmentDescription">Cargando descripción...</p>
+                    </section>
+
+                    <section class="assignment-detail-block" aria-labelledby="assignment-date-title">
+                        <h3 id="assignment-date-title">Fecha de entrega</h3>
+                        <p id="assignmentDueDate">Cargando fecha...</p>
+                    </section>
+                </article>
+
+                <section class="empty-state" id="assignmentError" hidden>
+                    <p>No se pudo cargar la tarea.</p>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <script src="../scripts/assignment-detail.js"></script>
+</body>
+</html>
