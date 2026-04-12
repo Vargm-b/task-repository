@@ -112,6 +112,12 @@ body {
     overflow: hidden;
 }
 
+.page-detail {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
 /* dashboard */
 .page-dashboard {
     display: flex;
@@ -290,6 +296,59 @@ body {
     font-size: 18px;
     color: var(--secondary);
     flex-shrink: 0;
+}
+
+.assignment-detail-section {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.detail-course-name {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.assignment-detail-section h2 {
+    margin: 0 0 24px 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.assignment-detail-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.assignment-detail-block {
+    margin-top: 24px;
+}
+
+.assignment-detail-block:not(:first-of-type) {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.assignment-detail-block h3 {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.assignment-detail-block p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
 }
 
 .empty-state {
