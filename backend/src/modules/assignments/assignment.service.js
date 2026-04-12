@@ -49,4 +49,20 @@ async function createAssignment({ class_id, title, description, max_score, due_d
     return newAssignment;
 }
 
-module.exports = { createAssignment };
+async function getAssignmentById(id){
+    if(!id){
+        throw new Error('Assignment id  is required');
+    }
+
+    const result = await pool.query(
+        'SELECT id, title, description, due_date FROM assignment WHERE id = $1',
+        [id]
+    );
+
+    if(result.rows.length === 0){
+        throw new Error('Assignment not found');
+    }
+    return result.rows[0];
+}
+
+module.exports = {getAssignmentById, createAssignment };
