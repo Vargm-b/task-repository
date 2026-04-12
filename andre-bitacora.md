@@ -35,4 +35,14 @@
 
 ## Día 4 (11/04/2026):
 
-- **Cometario:** Si bien, los anteriores días realicé un avance en local y lo presenté en el daily scrum respectivo; no subí estos cambios al repositorio en github. Debido a que los consideraba avances muy pequeños, simples o productos de un mock extenso y estático. En tanto, este 4to día, decidí subirlo para registrar mi avance en los commits del proyecto.
+- **Comentario:** Si bien, los anteriores días realicé un avance en local y lo presenté en el daily scrum respectivo; no subí estos cambios al repositorio en github. Debido a que los consideraba avances muy pequeños, simples o productos de un mock extenso y estático. En tanto, este 4to día, decidí subirlo para registrar mi avance en los commits del proyecto.
+
+---
+
+## Día 5 (12/04/2026):
+
+- **Comentario:** Durante este día tuve que esperar la resolución de los pull requests pendientes de mis compañeros, con el objetivo de evitar conflictos de merge en mis ediciones. Esta espera fue necesaria para mantener la coherencia del repositorio y asegurar que mis cambios se integren sin sobrescribir avances ajenos.
+
+- **Detalles:** Con el repositorio actualizado, enfoqué mi planificación en la implementación de las tareas T13.4 y T13.5, lo cual requería que el archivo assignments.js estuviera sincronizado con los últimos cambios. Este paso fue clave para garantizar que las nuevas funcionalidades se integren correctamente y mantengan la consistencia con el flujo de trabajo del equipo.
+
+- **Estado:** Pendiente de implementación de T13.4 y T13.5, con assignments.js ya preparado para recibir las nuevas ediciones.
