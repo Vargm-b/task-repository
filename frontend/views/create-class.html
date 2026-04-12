@@ -15,15 +15,31 @@
 
         <nav aria-label="Menú principal">
             <ul class="menu">
-                <li><a href="#">Actividad</a></li>
-                <li><a href="#" class="active">Equipos</a></li>
-                <li><a href="#">Tareas</a></li>
-                <li><a href="#">Calendario</a></li>
+                <li>
+                    <a href="#" aria-disabled="true">
+                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <span>Actividad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./class-dashboard.html" class="active" aria-current="page">
+                        <img src="../assets/contact-green.svg" alt="" class="menu-icon">
+                        <span>Equipos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assignment-list.html">
+                        <img src="../assets/task-gray.svg" alt="" class="menu-icon">
+                        <span>Tareas</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
         <footer class="sidebar-footer">
-            <button type="button" class="new-class-button">Nueva clase</button>
+            <a href="create-class.html">
+                <button type="button" class="new-class-button">Nueva Clase</button>
+            </a>
         </footer>
     </aside>
 
