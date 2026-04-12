@@ -15,7 +15,7 @@ async function createAssignment({ class_id, title, description, max_score, due_d
     const result = await pool.query(
         `INSERT INTO assignment (class_id, title, description, max_score, due_date, attachment_data, attachment_name, attachment_mime)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING *`,
+        RETURNING id, class_id, title, description, max_score, due_date, attachment_name, attachment_mime`,
         [class_id, title.trim(), description.trim(), max_score, dueDateObj, fileData, fileName, fileMime]
     );
 
@@ -31,9 +31,9 @@ async function createAssignment({ class_id, title, description, max_score, due_d
             const flatValues = [];
             let i = 1;
 
-            students.forEach(({ student }) => {
+            students.forEach((row) => {
                 queryValues.push(`($${i++}, $${i++}, $${i++}, $${i++}, false, NOW())`);
-                flatValues.push(student.student_id, class_id, newAssignment.id, message);
+                flatValues.push(row.student_id, class_id, newAssignment.id, message);
             });
 
             await pool.query(
