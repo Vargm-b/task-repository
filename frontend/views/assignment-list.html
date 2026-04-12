@@ -15,24 +15,37 @@
 
         <nav aria-label="Menú principal">
             <ul class="menu">
-                <li><a href="#">Actividad</a></li>
-                <li><a href="#">Equipos</a></li>
-                <li><a href="#" class="active" aria-current="page">Tareas</a></li>
+                <li>
+                    <a href="#" aria-disabled="true">
+                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <span>Actividad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./class-dashboard.html">
+                        <img src="../assets/contact-gray.svg" alt="" class="menu-icon">
+                        <span>Equipos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assignment-list.html" class="active" aria-current="page">
+                        <img src="../assets/task-green.svg" alt="" class="menu-icon">
+                        <span>Tareas</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
         <footer class="sidebar-footer">
-            <button type="button" class="new-class-button">Nueva clase</button>
+            <a href="create-assignment.html">
+                <button type="button" class="new-class-button">Nueva Tarea</button>
+            </a>
         </footer>
     </aside>
 
     <main class="page page-form">
         <header class="topbar">
             <h1>Task Repository</h1>
-
-            <nav aria-label="Acciones">
-                <a href="./create-assignment.html" class="submit-button">Nueva tarea</a>
-            </nav>
         </header>
 
         <section class="assignment-list-section scrollable-section" aria-labelledby="assignment-list-title">
@@ -40,7 +53,7 @@
             <h2 id="assignment-list-title">Lista de tareas</h2>
 
             <section class="assignment-list" aria-label="Listado de tareas" id="assignment-list">
-                <p class="empty-state" id="assignment-empty-state">No hay tareas aún.</p>
+                <p class="empty-state" id="assignment-empty-state" hidden>Aún no hay tareas disponibles.</p>
             </section>
         </section>
     </main>
