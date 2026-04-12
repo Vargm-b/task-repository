@@ -1,4 +1,4 @@
-const {createClass} = require('./class.service');
+    const {createClass} = require('./class.service');
 
 async function  handleCreateClass(req, res){
     try{

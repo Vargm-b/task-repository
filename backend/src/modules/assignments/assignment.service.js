@@ -1,3 +1,7 @@
+// Importamos el modelo para consultas relacionadas a assignments
+// (se usa en la función fetchAssignments)
+const assignmentModel = require('./assignment.model');
+
 const pool = require('../../core/database');
 
 async function createAssignment({ class_id, title, description, max_score, due_date }){
@@ -13,12 +17,41 @@ async function createAssignment({ class_id, title, description, max_score, due_d
     if(dueDateObj <= new Date()) throw new Error('due_date must be in the future');
 
     const result = await pool.query(
-        `INSERT INTO assignments (class_id, title, description, max_score, due_date)
+        `INSERT INTO assignment (class_id, title, description, max_score, due_date)
         VALUES ($1, $2, $3, $4, $5)
         RETURNING *`,
         [class_id, title.trim(), description.trim(), max_score, dueDateObj]
     );
     return result.rows[0];
 }
+//Obtiene las tareas de una clase específica
+async function fetchAssignments(class_id) {
+    if (!class_id) throw new Error('class_id is required');
+    return await assignmentModel.getAssignmentsByClass(class_id);
+}
+//Obtiene todas las tareas de una clase específica
+async function getAssignmentsByClass(classId) {
 
-module.exports = { createAssignment };
+    const query = `
+        SELECT 
+            id, 
+            class_id, 
+            title, 
+            description, 
+            max_score, 
+            due_date, 
+            attachment_url, 
+            created_at
+        FROM assignment
+        WHERE class_id = $1
+        ORDER BY due_date ASC;
+    `;
+
+    const result = await pool.query(query, [classId]);
+
+    return result.rows; // Devuelve la lista de tareas
+}
+
+module.exports = { getAssignmentsByClass };
+
+module.exports = { createAssignment, fetchAssignments };
