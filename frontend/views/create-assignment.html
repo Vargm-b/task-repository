@@ -4,98 +4,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publicar tarea</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/styles.css">
 </head>
-<body>
-  <main class="page">
-    <section class="card">
-      <h1 class="page-title">Publicar tarea</h1>
-      <p class="page-subtitle">Complete los datos para crear y publicar una nueva tarea en su clase.</p>
+<body class="layout">
+    <aside class="sidebar">
+        <header class="brand">
+            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <h2>TR</h2>
+        </header>
 
-      <form id="create-assignment-form" class="form" novalidate>
-        <div class="form-field">
-          <label for="class-id" class="form-label">Clase</label>
-          <select id="class-id" name="classId" class="form-input" required>
-            <option value="" disabled selected>Seleccione una clase</option>
-          </select>
-        </div>
+        <nav aria-label="Menú principal">
+            <ul class="menu">
+                <li>
+                    <a href="#" aria-disabled="true">
+                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <span>Actividad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./class-dashboard.html">
+                        <img src="../assets/contact-gray.svg" alt="" class="menu-icon">
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assignment-list.html" class="active" aria-current="page">
+                        <img src="../assets/task-green.svg" alt="" class="menu-icon">
+                        <span>Tareas</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-        <div class="form-field">
-          <label for="title" class="form-label">Título</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            class="form-input"
-            placeholder="Ej. Informe de laboratorio 1"
-            maxlength="120"
-            required
-          >
-        </div>
+        <footer class="sidebar-footer">
+            <button type="button" class="new-class-button">Nueva Tarea</button>
+        </footer>
+    </aside>
 
-        <div class="form-field">
-          <label for="description" class="form-label">Descripción / instrucciones</label>
-          <textarea
-            id="description"
-            name="description"
-            class="form-input form-textarea"
-            placeholder="Describe brevemente las instrucciones de la tarea"
-            rows="5"
-            required
-          ></textarea>
-        </div>
+    <main class="page page-form">
+        <header class="topbar">
+            <h1>Task Repository</h1>
+        </header>
 
-        <div class="form-row">
-          <div class="form-field">
-            <label for="max-score" class="form-label">Puntaje máximo</label>
-            <input
-              type="number"
-              id="max-score"
-              name="maxScore"
-              class="form-input"
-              min="1"
-              max="100"
-              step="1"
-              placeholder="100"
-              required
-            >
-          </div>
+        <section class="assignment-form-section scrollable-section" aria-labelledby="publish-assignment-title">
+            <p class="breadcrumb">Portal / Tareas / Publicar tarea</p>
+            <h2 id="publish-assignment-title">Publicar tarea</h2>
+            <p>Completa los datos para crear y publicar una nueva tarea en su clase.</p>
 
-          <div class="form-field">
-            <label for="due-date" class="form-label">Fecha y hora límite</label>
-            <input
-              type="datetime-local"
-              id="due-date"
-              name="dueDate"
-              class="form-input"
-              required
-            >
-          </div>
-        </div>
+            <form id="create-assignment-form" class="form-card" novalidate>
 
-        <div class="form-field">
-          <label for="attachment" class="form-label">Archivo adjunto <span class="form-hint">(opcional)</span></label>
-          <input
-            type="file"
-            id="attachment"
-            name="attachment"
-            class="form-input form-file"
-            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
-          >
-          <small class="form-hint">Formatos permitidos: PDF, Word, imágenes.</small>
-        </div>
+                <label for="class-id">Clase</label>
+                <select id="class-id" name="classId" required>
+                    <option value="" disabled selected>Seleccione una clase</option>
+                </select>
 
-        <div class="form-actions">
-          <button type="reset" class="btn btn-secondary">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Publicar tarea</button>
-        </div>
-      </form>
-    </section>
-  </main>
+                <label for="title">Título</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Ej. Informe de laboratorio 1"
+                    maxlength="120"
+                    required
+                >
 
-  <script src="../scripts/assignments.js"></script>
+                <label for="description">Descripción / instrucciones</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Describe brevemente las instrucciones de la tarea"
+                    required
+                ></textarea>
+
+                <fieldset class="form-row">
+                    <p>
+                        <label for="max-score">Puntaje máximo</label>
+                            <input
+                                type="number"
+                                id="max-score"
+                                name="maxScore"
+                                min="0"
+                                max="100"
+                                placeholder="100"
+                                required
+                            >
+                    </p>
+
+                    <p>
+                        <label for="due-date">Fecha y hora límite</label>
+                            <input
+                                type="datetime-local"
+                                id="due-date"
+                                name="dueDate"
+                                required
+                            >
+                    </p>
+                </fieldset>
+
+                <label for="attachment">
+                    Archivo adjunto <span class="form-hint">(opcional)</span>
+                </label>
+                <input
+                    type="file"
+                    id="attachment"
+                    name="attachment"
+                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+                >
+                <small class="form-hint">Formatos permitidos: PDF, Word, imágenes.</small>
+
+                <footer class="form-actions">
+                    <button type="reset" class="cancel-button">Cancelar</button>
+                    <button type="submit" class="submit-button">Publicar tarea</button>
+                </footer>
+            </form>
+        </section>
+    </main>
+
+    <script src="../scripts/assignments.js"></script>
 </body>
 </html>

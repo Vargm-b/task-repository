@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear clase virtual</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body class="layout">
+    <aside class="sidebar">
+        <header class="brand">
+            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <h2>TR</h2>
+        </header>
+
+        <nav aria-label="Menú principal">
+            <ul class="menu">
+                <li>
+                    <a href="#" aria-disabled="true">
+                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <span>Actividad</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./class-dashboard.html" class="active" aria-current="page">
+                        <img src="../assets/contact-green.svg" alt="" class="menu-icon">
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assignment-list.html">
+                        <img src="../assets/task-gray.svg" alt="" class="menu-icon">
+                        <span>Tareas</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+            <a href="create-class.html">
+                <button type="button" class="new-class-button">Nueva Clase</button>
+            </a>
+        </footer>
+    </aside>
+
+    <main class="page">
+        <header class="topbar">
+            <h1>Task Repository</h1>
+        </header>
+
+        <section class="create-class-section" aria-labelledby="create-class-title">
+            <p class="breadcrumb">Portal / Clases / Nueva clase</p>
+
+            <h2 id="create-class-title">Crear clase virtual</h2>
+
+            <form id="createClassForm" class="form-card">
+                <label for="className">Nombre de la clase</label>
+                <input
+                    type="text"
+                    id="className"
+                    name="className"
+                    placeholder="Ej. Sistemas de Información II"
+                >
+
+                <label for="classDescription">Descripción</label>
+                <textarea
+                    id="classDescription"
+                    name="classDescription"
+                    placeholder="Describe brevemente la clase..."
+                ></textarea>
+
+                <footer class="form-actions">
+                    <button type="reset" class="cancel-button">Cancelar</button>
+                    <button type="submit" class="submit-button">Crear clase</button>
+                </footer>
+            </form>
+        </section>
+    </main>
+
+    <script src="../scripts/classes.js"></script>
+</body>
+</html>
