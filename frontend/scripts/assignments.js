@@ -204,9 +204,78 @@ async function handleCreateAssignmentSubmit(e) {
     }
 }
 
+function getQueryParam(key) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(key);
+}
+
+function renderAssignmentDetail(assignment) {
+    const title = document.getElementById("assignment-detail-title");
+    const course = document.getElementById("assignmentCourse");
+    const description = document.getElementById("assignmentDescription");
+    const dueDate = document.getElementById("assignmentDueDate");
+    const errorBox = document.getElementById("assignmentError");
+
+    if (!title || !course || !description || !dueDate) return;
+
+    title.textContent = assignment.title || "Sin título";
+    course.textContent = assignment.class_name || "Curso sin nombre";
+    description.textContent = assignment.description || "Sin descripción";
+    dueDate.textContent = formatDueDate(assignment.due_date);
+
+    if (errorBox) {
+        errorBox.hidden = true;
+    }
+}
+
+function showAssignmentDetailError(message = "No se pudo cargar la tarea.") {
+    const title = document.getElementById("assignment-detail-title");
+    const course = document.getElementById("assignmentCourse");
+    const description = document.getElementById("assignmentDescription");
+    const dueDate = document.getElementById("assignmentDueDate");
+    const errorBox = document.getElementById("assignmentError");
+
+    if (title) title.textContent = "Error al cargar tarea";
+    if (course) course.textContent = "";
+    if (description) description.textContent = "";
+    if (dueDate) dueDate.textContent = "";
+
+    if (errorBox) {
+        errorBox.hidden = false;
+    }
+}
+
+async function loadAssignmentDetail() {
+    const detailTitle = document.getElementById("assignment-detail-title");
+    if (!detailTitle) return;
+
+    const assignmentId = getQueryParam("id");
+
+    if (!assignmentId) {
+        showAssignmentDetailError("No se encontró el ID");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_ASSIGNMENTS_URL}/${assignmentId}`);
+
+        if (!response.ok) {
+            throw new Error("No se pudo cargar la tarea");
+        }
+
+        const assignment = await response.json();
+        renderAssignmentDetail(assignment);
+
+    } catch (error) {
+        console.error(error);
+        showAssignmentDetailError();
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     loadAssignments();
     loadClassesIntoSelect();
+    loadAssignmentDetail();
 
     const createForm = document.getElementById("create-assignment-form");
     if (createForm) {
