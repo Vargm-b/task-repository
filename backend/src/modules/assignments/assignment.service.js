@@ -79,7 +79,11 @@ async function getAssignmentById(id) {
     }
 
     const result = await pool.query(
-        "SELECT id, title, description, due_date FROM assignment WHERE id = $1",
+        `SELECT a.id, a.title, a.description, a.due_date, a.max_score, a.class_id,
+                vc.name AS class_name
+         FROM assignment a
+         LEFT JOIN virtual_class vc ON vc.id = a.class_id
+         WHERE a.id = $1`,
         [id]
     );
 
