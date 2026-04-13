@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de tareas</title>
+    <title>Detalle de tarea</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body class="layout">
@@ -16,7 +16,7 @@
         <nav aria-label="Menú principal">
             <ul class="menu">
                 <li>
-                    <a href="#" aria-disabled="true">
+                    <a>
                         <img src="../assets/icons/alarm-gray.svg" alt="" class="menu-icon">
                         <span>Actividad</span>
                     </a>
@@ -37,23 +37,42 @@
         </nav>
 
         <footer class="sidebar-footer">
-            <a href="create-assignment.html">
+            <a href="./create-class.html">
                 <button type="button" class="new-class-button">Nueva Tarea</button>
             </a>
         </footer>
     </aside>
 
-    <main class="page page-form">
+    <main class="page page-detail">
         <header class="topbar">
             <h1>Task Repository</h1>
         </header>
 
-        <section class="assignment-list-section scrollable-section" aria-labelledby="assignment-list-title">
-            <p class="breadcrumb">Inicio / Tareas</p>
-            <h2 id="assignment-list-title">Lista de tareas</h2>
+        <section class="scrollable-section">
+            <section class="assignment-detail-section" aria-labelledby="assignment-detail-title">
+                <p class="breadcrumb">Inicio / Tareas / Detalle</p>
 
-            <section class="assignment-list" aria-label="Listado de tareas" id="assignment-list">
-                <p class="empty-state" id="assignment-empty-state" hidden>Aún no hay tareas disponibles.</p>
+                <p class="detail-course-name" id="assignmentCourse">
+                    Cargando curso...
+                </p>
+
+                <h2 id="assignment-detail-title">Cargando tarea...</h2>
+
+                <article class="assignment-detail-card">
+                    <section class="assignment-detail-block" aria-labelledby="assignment-description-title">
+                        <h3 id="assignment-description-title">Descripción del proyecto</h3>
+                        <p id="assignmentDescription">Cargando descripción...</p>
+                    </section>
+
+                    <section class="assignment-detail-block" aria-labelledby="assignment-date-title">
+                        <h3 id="assignment-date-title">Fecha de entrega</h3>
+                        <p id="assignmentDueDate">Cargando fecha...</p>
+                    </section>
+                </article>
+
+                <section class="empty-state" id="assignmentError" hidden>
+                    <p>No se pudo cargar la tarea.</p>
+                </section>
             </section>
         </section>
     </main>
