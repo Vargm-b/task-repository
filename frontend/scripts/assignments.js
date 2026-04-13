@@ -313,7 +313,7 @@ async function loadAssignments() {
         renderAssignments(assignments);
     } catch (error) {
         console.error('Error al cargar tareas:', error);
-        renderAssignments(getPreviewAssignments());
+        renderAssignmentListError(error.message || 'No se pudo cargar la lista de tareas.');
     }
 }
 
