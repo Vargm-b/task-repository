@@ -86,14 +86,28 @@ async function loadAssignments() {
     }
 
     try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Error al cargar tareas');
+        const urlParams = new URLSearchParams(window.location.search);
+        const classId = urlParams.get('class_id');
+
+        if (!classId) {
+            throw new Error('No se especificó ninguna clase.');
+        }
+
+        const response = await fetch(`${API_URL}?class_id=${classId}`);
+        
+        if (response.status === 403 || response.status === 401) {
+            throw new Error('Acceso denegado: No estás inscrito en esta clase.');
+        }
+        if (!response.ok) {
+            throw new Error('Error al cargar las tareas del servidor.');
+        }
         
         const data = await response.json();
         renderList(normalizeAssignments(data), assignmentList, emptyState);
+        
     } catch (error) {
         console.error(error);
-        assignmentList.innerHTML = '<p class="empty-state">No se pudieron cargar las tareas.</p>';
+        assignmentList.innerHTML = `<p class="empty-state">${error.message}</p>`;
     }
 }
 
