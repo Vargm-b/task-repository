@@ -357,3 +357,91 @@ body {
     color: var(--white);
     border: 1px solid var(--primary);
 }
+
+
+/* ── page-dashboard (espejo de page-form para habilitar scroll) ── */
+.page-dashboard {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ── class dashboard section ── */
+.class-dashboard-section {
+    max-width: 880px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.class-dashboard-section h2 {
+    margin: 0 0 24px 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+/* ── class grid ── */
+.class-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── class card ── */
+.class-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.class-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.class-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.class-card-header-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.class-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.class-card-title {
+    margin: 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.class-card-description {
+    margin: 0;
+    font-size: 14px;
+    color: var(--secondary);
+    line-height: 1.4;
+}
+
+.class-card-code {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.class-card-code strong {
+    color: var(--primary);
+}
