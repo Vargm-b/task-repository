@@ -1,94 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unirse a una clase</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-</head>
-<body class="layout">
-    <aside class="sidebar">
-        <header class="brand">
-            <img src="../assets/totoro.png" alt="Logo Task Repository">
-            <h2>TR</h2>
-        </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unirse a una clase</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+    </head>
+    <body class="layout">
 
-        <nav aria-label="Menú principal">
-            <ul class="menu">
-                <li>
-                    <a href="#">
-                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
-                        <span>Actividad</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./class-dashboard.html" class="active" aria-current="page">
-                        <img src="../assets/contact-green.svg" alt="" class="menu-icon">
-                        <span>Clases</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./assignment-list.html">
-                        <img src="../assets/task-gray.svg" alt="" class="menu-icon">
-                        <span>Tareas</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <aside class="sidebar">
+            <header class="brand">
+                <img src="../assets/totoro.png" alt="Logo Task Repository">
+                <h2>TR</h2>
+            </header>
 
-        <footer class="sidebar-footer">
-            <a href="create-class.html">
-                <button type="button" class="new-class-button">Nueva Clase</button>
-            </a>
-        </footer>
-    </aside>
+            <nav aria-label="Menú principal">
+                <ul class="menu">
+                    <li>
+                        <a href="#">
+                            <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                            <span>Actividad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./class-dashboard.html" class="active" aria-current="page">
+                            <img src="../assets/contact-green.svg" alt="" class="menu-icon">
+                            <span>Clases</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./assignment-list.html">
+                            <img src="../assets/task-gray.svg" alt="" class="menu-icon">
+                            <span>Tareas</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-    <main class="page page-form">
-    <header class="topbar">
-        <h1>Task Repository</h1>
-    </header>
-
-    <section class="scrollable-section">
-        <section class="join-class-section" aria-labelledby="join-class-title">
-            <p class="breadcrumb">Portal / Clases / Unirse</p>
-
-            <form id="joinClassForm" class="join-class-card">
-                <h2 id="join-class-title">Unirse a una clase</h2>
-
-                <p class="join-class-description">
-                    Introduce el código proporcionado por tu tutor para acceder a la clase.
-                </p>
-
-                <label for="accessCode">Código de acceso</label>
-                <input
-                    type="text"
-                    id="accessCode"
-                    name="accessCode"
-                    placeholder="Ej: A1B2C3"
-                    maxlength="12"
-                    autocomplete="off"
-                >
-
-                <button type="submit" class="submit-button join-class-submit">
-                    Unirse
+            <footer class="sidebar-footer">
+                <button type="button" class="new-class-button" id="openClassModal">
+                    Nueva Clase
                 </button>
-            </form>
+            </footer>
+        </aside>
 
-            <section class="join-class-feedback" aria-label="Mensajes del formulario">
-                <section class="join-message join-message-error" id="joinError">
-                    <h3>Acceso denegado</h3>
-                    <p>El código no es válido o ya no está activo.</p>
+        <main class="page page-form">
+            <header class="topbar">
+                <h1>Task Repository</h1>
+            </header>
+
+            <section class="scrollable-section">
+                <section class="join-class-section" aria-labelledby="join-class-title">
+                    <p class="breadcrumb">Inicio / Clases / Unirse</p>
+
+                    <form id="joinClassForm" class="join-class-card">
+                        <h2 id="join-class-title">Unirse a una clase</h2>
+
+                        <p class="join-class-description">
+                            Introduce el código proporcionado por tu tutor para acceder a la clase.
+                        </p>
+
+                        <label for="accessCode">Código de acceso</label>
+                        <input
+                            type="text"
+                            id="accessCode"
+                            name="accessCode"
+                            placeholder="Ej: A1B2C3"
+                            maxlength="12"
+                            autocomplete="off"
+                        >
+
+                        <button type="submit" class="submit-button join-class-submit">
+                            Unirse
+                        </button>
+                    </form>
+
+                    <section class="join-class-feedback" aria-label="Mensajes del formulario">
+                        <section class="join-message join-message-error" id="joinError">
+                            <h3>Acceso denegado</h3>
+                            <p>El código no es válido o ya no está activo.</p>
+                        </section>
+
+                        <section class="join-message join-message-success" id="joinSuccess">
+                            <h3>Operación exitosa</h3>
+                            <p>¡Te has unido a la clase con éxito!</p>
+                        </section>
+                    </section>
                 </section>
+            </section>
+        </main>
 
-                <section class="join-message join-message-success" id="joinSuccess">
-                    <h3>Operación exitosa</h3>
-                    <p>¡Te has unido a la clase con éxito!</p>
+        <section class="modal-backdrop" id="classModal" hidden>
+            <section class="class-modal" aria-labelledby="class-modal-title">
+                <header class="class-modal-header">
+                    <h2 id="class-modal-title">¿Qué deseas hacer?</h2>
+                    <button type="button" class="modal-close-button" id="closeClassModal" aria-label="Cerrar">
+                        ×
+                    </button>
+                </header>
+
+                <section class="class-modal-actions">
+                    <a href="./create-class.html" class="modal-action-button">
+                        Crear clase
+                    </a>
+
+                    <a href="./join-class.html" class="modal-action-button modal-action-secondary">
+                        Unirse a una clase
+                    </a>
                 </section>
             </section>
         </section>
-    </section>
-</main>
 
-    <script src="../scripts/enrollments.js"></script>
-</body>
+        <script src="../scripts/class-modal.js"></script>
+    </body>
 </html>
