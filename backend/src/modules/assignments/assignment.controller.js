@@ -1,4 +1,4 @@
-const { createAssignment, getAssignmentById } = require('./assignment.service')
+const { createAssignment, getAssignmentById } = require('./assignment.service');
 
 async function handleCreateAssignment(req, res){
     try{
