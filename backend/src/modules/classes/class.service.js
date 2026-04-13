@@ -35,5 +35,18 @@ async function createClass({name, description, teacher_id}){
     );
     return result.rows[0];
 }
-
-module.exports = {createClass, generateUniqueAccessCode};
+// Función para obtener las clases de un docente específico
+async function getClassesByTeacher(teacher_id){
+    if(!teacher_id) throw new Error('teacher_id is required');
+    
+    // Consulta a virtual_class filtrando por el ID del docente
+    const result = await pool.query(
+        `SELECT id, name, description, access_code, teacher_id, created_at 
+         FROM virtual_class 
+         WHERE teacher_id = $1 
+         ORDER BY created_at DESC`,
+        [teacher_id]
+    );
+    return result.rows;
+}
+module.exports = { createClass, getClassesByTeacher };

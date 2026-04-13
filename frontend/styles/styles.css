@@ -112,6 +112,97 @@ body {
     overflow: hidden;
 }
 
+.page-detail {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* dashboard */
+.page-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.class-dashboard-section {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.class-dashboard-section h2 {
+    margin: 0 0 24px 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.class-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.class-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.class-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.class-card-header img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.class-card-body {
+    padding: 14px 16px;
+}
+
+.class-card-body h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.class-card-title {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.class-card-description {
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.class-card-code {
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* topbar */
 .topbar {
     margin-bottom: 24px;
     display: flex;
@@ -134,7 +225,7 @@ body {
 }
 
 .breadcrumb {
-    margin: 0 0 16px 0;
+    margin: 0 0 12px 0;
     font-size: 14px;
     color: var(--secondary);
 }
@@ -192,6 +283,11 @@ body {
     background-color: var(--bg);
 }
 
+.assignment-card:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 .assignment-card-title {
     margin: 0;
     font-size: 16px;
@@ -229,6 +325,63 @@ body {
     flex-shrink: 0;
 }
 
+.assignment-detail-section {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.detail-course-name {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.assignment-detail-section h2 {
+    margin: 0 0 24px 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.assignment-detail-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.assignment-detail-card[hidden] {
+    display: none;
+}
+
+.assignment-detail-block {
+    margin-top: 24px;
+}
+
+.assignment-detail-block:not(:first-of-type) {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.assignment-detail-block h3 {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.assignment-detail-block p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+}
+
 .empty-state {
     background-color: var(--white);
     border: 1px dashed var(--border);
@@ -237,6 +390,20 @@ body {
     text-align: center;
     font-size: 14px;
     color: var(--secondary);
+}
+
+.assignment-detail-section .empty-state {
+    margin-top: 24px;
+}
+
+.preview-banner {
+    margin: 0 0 16px 0;
+    padding: 12px 16px;
+    background-color: rgba(87, 131, 135, 0.1);
+    border: 1px solid rgba(87, 131, 135, 0.25);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--primary);
 }
 
 .scrollable-section {
@@ -356,4 +523,158 @@ body {
     background-color: var(--primary);
     color: var(--white);
     border: 1px solid var(--primary);
+}
+
+.join-class-description {
+    margin: 0 0 24px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--secondary);
+}
+
+.join-class-card label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: var(--secondary);
+}
+
+.join-class-card input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--bg);
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.join-class-submit {
+    width: 100%;
+}
+
+.join-class-feedback {
+    max-width: 520px;
+    margin: 24px auto 0;
+    display: flex;
+    gap: 16px;
+}
+
+.join-message {
+    flex: 1;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.join-message h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.join-message p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.join-message-error {
+    border-left: 4px solid var(--danger);
+}
+
+.join-message-error h3,
+.join-message-error p {
+    color: var(--danger);
+}
+
+.join-message-success {
+    border-left: 4px solid var(--primary);
+}
+
+.join-message-success h3,
+.join-message-success p {
+    color: var(--primary);
+}
+
+/* modal */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(31, 41, 55, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1000;
+}
+
+.modal-backdrop[hidden] {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.class-modal {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.class-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.class-modal-header h2 {
+    margin: 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    color: var(--primary);
+}
+
+.modal-close-button {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--secondary);
+    cursor: pointer;
+    padding: 0;
+}
+
+.class-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-action-button {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-action-secondary {
+    background-color: transparent;
+    color: var(--primary);
 }

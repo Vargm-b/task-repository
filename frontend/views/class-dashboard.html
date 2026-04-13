@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear clase virtual</title>
+    <title>Dashboard de Clases</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body class="layout">
@@ -43,60 +43,46 @@
         </footer>
     </aside>
 
-    <main class="page">
+    <main class="page page-dashboard">
         <header class="topbar">
             <h1>Task Repository</h1>
         </header>
 
-        <section class="create-class-section" aria-labelledby="create-class-title">
-            <p class="breadcrumb">Inicio / Clases / Nueva clase</p>
+        <section class="scrollable-section">
+            <section class="class-dashboard-section" aria-labelledby="class-dashboard-title">
+                <p class="breadcrumb">Inicio / Clases</p>
+                <h2 id="class-dashboard-title">Mis clases</h2>
 
-            <h2 id="create-class-title">Crear clase virtual</h2>
+                <section class="class-grid" id="classGrid"></section>
 
-            <form id="createClassForm" class="form-card">
-                <label for="className">Nombre de la clase</label>
-                <input
-                    type="text"
-                    id="className"
-                    name="className"
-                    placeholder="Ej. Sistemas de Información II"
-                >
+                <section class="empty-state" id="emptyState" hidden>
+                    <p>No tienes clases aún. Crea una nueva clase para comenzar.</p>
+                </section>
 
-                <label for="classDescription">Descripción</label>
-                <textarea
-                    id="classDescription"
-                    name="classDescription"
-                    placeholder="Describe brevemente la clase..."
-                ></textarea>
-
-                <footer class="form-actions">
-                    <button type="reset" class="cancel-button">Cancelar</button>
-                    <button type="submit" class="submit-button">Crear clase</button>
-                </footer>
-            </form>
+            </section>
         </section>
     </main>
 
     <section class="modal-backdrop" id="classModal" hidden>
-    <section class="class-modal" aria-labelledby="class-modal-title">
-        <header class="class-modal-header">
-            <h2 id="class-modal-title">¿Qué deseas hacer?</h2>
-            <button type="button" class="modal-close-button" id="closeClassModal" aria-label="Cerrar">
-                ×
-            </button>
-        </header>
+        <section class="class-modal" aria-labelledby="class-modal-title">
+            <header class="class-modal-header">
+                <h2 id="class-modal-title">¿Qué deseas hacer?</h2>
+                <button type="button" class="modal-close-button" id="closeClassModal" aria-label="Cerrar">
+                    ×
+                </button>
+            </header>
 
-        <section class="class-modal-actions">
-            <a href="./create-class.html" class="modal-action-button">
-                Crear clase
-            </a>
+            <section class="class-modal-actions">
+                <a href="./create-class.html" class="modal-action-button">
+                    Crear clase
+                </a>
 
-            <a href="./join-class.html" class="modal-action-button modal-action-secondary">
-                Unirse a una clase
-            </a>
+                <a href="./join-class.html" class="modal-action-button modal-action-secondary">
+                    Unirse a una clase
+                </a>
+            </section>
         </section>
     </section>
-</section>
 
     <script src="../scripts/class-modal.js"></script>
     <script src="../scripts/classes.js"></script>
