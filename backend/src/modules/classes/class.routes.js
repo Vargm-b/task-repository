@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {
-    handleCreateClass,
-    handleGetClasses
-} = require('./class.controller');
+const { handleCreateClass, handleGetTeacherClasses } = require('./class.controller');
 
-router.get('/', handleGetClasses);
 router.post('/', handleCreateClass);
+
+// Nueva ruta para obtener las clases de un docente específico 
+// Cuando alguien entre a /teacher/:id, ejecutará el código
+router.get('/teacher/:teacher_id', handleGetTeacherClasses);
 
 module.exports = router;

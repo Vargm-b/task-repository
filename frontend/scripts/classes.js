@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:4100/api';
+const API_BASE_URL = 'http://localhost:3000/api';
+
+// Sprint 1: sin sistema de auth, usamos un docente fijo de prueba
+const TEACHER_ID = '2e0c5648-fcb2-4417-9309-c4f57f82f5a5';
 
 const HEADER_IMAGES = [
     '../assets/headers/header-1.jpg',
@@ -44,7 +47,8 @@ async function handleCreateClassSubmit(event) {
             },
             body: JSON.stringify({
                 name,
-                description
+                description,
+                teacher_id: TEACHER_ID
             })
         });
 
@@ -68,7 +72,7 @@ async function loadClasses() {
     const emptyState = document.getElementById('emptyState');
 
     try {
-        const response = await fetch(`${API_BASE_URL}/classes`);
+        const response = await fetch(`${API_BASE_URL}/classes/teacher/${TEACHER_ID}`);
         const classes = await response.json();
 
         if (!response.ok) {

@@ -3,7 +3,7 @@ const {
     getAssignmentById,
     getAssignmentsByClass,
     getAllAssignments
-} = require("./assignment.service");
+} = require('./assignment.service');
 
 async function handleCreateAssignment(req, res) {
     try {
