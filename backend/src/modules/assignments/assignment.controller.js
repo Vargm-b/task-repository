@@ -2,10 +2,23 @@ const { createAssignment, getAssignmentById } = require('./assignment.service')
 
 async function handleCreateAssignment(req, res){
     try{
-        const { class_id, title, description, max_score, due_date } = req.body;
+        let { class_id, title, description, max_score, due_date } = req.body;
+        max_score = parseInt(max_score, 10);
+
+        const fileData = req.file ? req.file.buffer : null;
+        const fileName = req.file ? req.file.originalname : null;
+        const fileMime = req.file ? req.file.mimetype : null;
+
 
         const newAssignment = await createAssignment({
-            class_id, title, description, max_score, due_date
+            class_id, 
+            title, 
+            description, 
+            max_score, 
+            due_date, 
+            fileData,
+            fileName,
+            fileMime 
         });
         return res.status(201).json(newAssignment);
     }catch (error){
