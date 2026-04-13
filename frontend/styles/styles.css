@@ -503,30 +503,6 @@ body {
     border: 1px solid var(--primary);
 }
 
-.join-class-section {
-    max-width: 880px;
-    margin: 0 auto;
-}
-
-.join-class-card {
-    max-width: 520px;
-    margin: 0 auto;
-    background-color: var(--white);
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--primary);
-    border-radius: 12px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-}
-
-.join-class-card h2 {
-    margin: 0 0 8px 0;
-    font-family: 'Schibsted Grotesk', sans-serif;
-    font-size: 20px;
-    color: var(--primary);
-}
-
 .join-class-description {
     margin: 0 0 24px 0;
     font-size: 14px;
