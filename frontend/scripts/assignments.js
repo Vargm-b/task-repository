@@ -2,6 +2,7 @@ const API_BASE_URL = 'http://localhost:3000/api';
 const DEFAULT_CLASS_ID = '2e0c5648-fcb2-4417-9309-c4f57f82f5a5';
 const DEFAULT_CLASS_NAME = 'Sistemas de Informacion II';
 const DEFAULT_STUDENT_ID = '00000000-0000-0000-0000-000000000002';
+const TEACHER_ID = '2e0c5648-fcb2-4417-9309-c4f57f82f5a5';
 const USE_LOCAL_PREVIEW = false;
 
 const previewAssignments = [
@@ -441,6 +442,41 @@ function hydrateClassSelect() {
     classSelect.appendChild(option);
 }
 
+async function loadClassesIntoSelect() {
+    const classSelect = document.getElementById('class-id');
+
+    if (!classSelect) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/classes/teacher/${TEACHER_ID}`);
+
+        if (!response.ok) {
+            throw new Error('No se pudieron cargar las clases');
+        }
+
+        const classes = await response.json();
+        const activeClassId = getActiveClassId();
+
+        classSelect.innerHTML = '<option value="" disabled>Seleccione una clase</option>';
+
+        classes.forEach((virtualClass) => {
+            const option = document.createElement('option');
+            option.value = virtualClass.id;
+            option.textContent = virtualClass.name;
+            classSelect.appendChild(option);
+        });
+
+        if (activeClassId && classes.some((c) => c.id === activeClassId)) {
+            classSelect.value = activeClassId;
+        }
+    } catch (error) {
+        console.error('Error al cargar clases en el select:', error);
+        hydrateClassSelect();
+    }
+}
+
 function setupCreateAssignmentForm() {
     const createForm = document.getElementById('create-assignment-form');
 
@@ -448,7 +484,7 @@ function setupCreateAssignmentForm() {
         return;
     }
 
-    hydrateClassSelect();
+    loadClassesIntoSelect();
 
     createForm.addEventListener('submit', async (event) => {
         event.preventDefault();
