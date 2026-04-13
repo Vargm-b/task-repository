@@ -9,7 +9,7 @@
 <body class="layout">
     <aside class="sidebar">
         <header class="brand">
-            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <img src="../assets/brand/totoro.png" alt="Logo Task Repository">
             <h2>TR</h2>
         </header>
 
@@ -17,19 +17,19 @@
             <ul class="menu">
                 <li>
                     <a href="#" aria-disabled="true">
-                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <img src="../assets/icons/alarm-gray.svg" alt="" class="menu-icon">
                         <span>Actividad</span>
                     </a>
                 </li>
                 <li>
                     <a href="./class-dashboard.html" class="active" aria-current="page">
-                        <img src="../assets/contact-green.svg" alt="" class="menu-icon">
+                        <img src="../assets/icons/contact-green.svg" alt="" class="menu-icon">
                         <span>Clases</span>
                     </a>
                 </li>
                 <li>
                     <a href="./assignment-list.html">
-                        <img src="../assets/task-gray.svg" alt="" class="menu-icon">
+                        <img src="../assets/icons/task-gray.svg" alt="" class="menu-icon">
                         <span>Tareas</span>
                     </a>
                 </li>
@@ -37,9 +37,9 @@
         </nav>
 
         <footer class="sidebar-footer">
-            <a href="create-class.html">
-                <button type="button" class="new-class-button">Nueva Clase</button>
-            </a>
+            <button type="button" class="new-class-button" id="openClassModal">
+                Nueva Clase
+            </button>
         </footer>
     </aside>
 
@@ -49,7 +49,7 @@
         </header>
 
         <section class="create-class-section" aria-labelledby="create-class-title">
-            <p class="breadcrumb">Portal / Clases / Nueva clase</p>
+            <p class="breadcrumb">Inicio / Clases / Nueva clase</p>
 
             <h2 id="create-class-title">Crear clase virtual</h2>
 
@@ -77,6 +77,27 @@
         </section>
     </main>
 
-    <script src="../scripts/classes.js"></script>
+    <section class="modal-backdrop" id="classModal" hidden>
+    <section class="class-modal" aria-labelledby="class-modal-title">
+        <header class="class-modal-header">
+            <h2 id="class-modal-title">¿Qué deseas hacer?</h2>
+            <button type="button" class="modal-close-button" id="closeClassModal" aria-label="Cerrar">
+                ×
+            </button>
+        </header>
+
+        <section class="class-modal-actions">
+            <a href="./create-class.html" class="modal-action-button">
+                Crear clase
+            </a>
+
+            <a href="./join-class.html" class="modal-action-button modal-action-secondary">
+                Unirse a una clase
+            </a>
+        </section>
+    </section>
+</section>
+
+    <script src="../scripts/class-modal.js"></script>
 </body>
 </html>
