@@ -1,5 +1,13 @@
 const API_BASE_URL = 'http://localhost:4100/api';
 
+const HEADER_IMAGES = [
+    '../assets/headers/header-1.jpg',
+    '../assets/headers/header-2.jpg',
+    '../assets/headers/header-3.jpg',
+    '../assets/headers/header-4.jpg',
+    '../assets/headers/header-5.jpg'
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     const createClassForm = document.getElementById('createClassForm');
     const classGrid = document.getElementById('classGrid');
@@ -70,7 +78,9 @@ async function loadClasses() {
         classGrid.innerHTML = '';
 
         if (!classes.length) {
-            emptyState.hidden = false;
+            if (emptyState) {
+                emptyState.hidden = false;
+            }
             return;
         }
 
@@ -85,18 +95,41 @@ async function loadClasses() {
     } catch (error) {
         console.error('Error al cargar clases:', error);
         classGrid.innerHTML = '<p>No se pudieron cargar las clases.</p>';
-        emptyState.hidden = true;
+
+        if (emptyState) {
+            emptyState.hidden = true;
+        }
     }
+}
+
+function getHeaderImageByClassId(classId) {
+    let total = 0;
+
+    for (let i = 0; i < classId.length; i++) {
+        total += classId.charCodeAt(i);
+    }
+
+    const index = total % HEADER_IMAGES.length;
+    return HEADER_IMAGES[index];
 }
 
 function createClassCard(virtualClass) {
     const article = document.createElement('article');
     article.className = 'class-card';
 
+    const headerImage = getHeaderImageByClassId(virtualClass.id);
+
     article.innerHTML = `
-        <h3>${escapeHtml(virtualClass.name)}</h3>
-        <p>${escapeHtml(virtualClass.description || 'Sin descripción')}</p>
-        <p><strong>Código:</strong> ${escapeHtml(virtualClass.access_code)}</p>
+        <a href="./assignment-list.html?class_id=${encodeURIComponent(virtualClass.id)}&course=${encodeURIComponent(virtualClass.name)}" class="class-card-link">
+            <div class="class-card-header">
+                <img src="${headerImage}" alt="Portada de la clase">
+            </div>
+            <div class="class-card-body">
+                <h3 class="class-card-title">${escapeHtml(virtualClass.name)}</h3>
+                <p class="class-card-description">${escapeHtml(virtualClass.description || 'Sin descripción')}</p>
+                <p class="class-card-code"><strong>Código:</strong> ${escapeHtml(virtualClass.access_code)}</p>
+            </div>
+        </a>
     `;
 
     return article;
