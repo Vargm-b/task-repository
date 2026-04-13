@@ -1,14 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const multer = require('multer');
+const multer = require("multer");
 
-const { handleCreateAssignment, handleGetAssignmentById } = require('./assignment.controller');
+const {
+    handleCreateAssignment,
+    handleGetAssignmentById,
+    handleGetAssignments
+} = require("./assignment.controller");
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post('/', upload.single('attachment'), handleCreateAssignment);
-
-router.get('/:id', handleGetAssignmentById);
-
+router.post("/", upload.single("attachment"), handleCreateAssignment);
+router.get("/", handleGetAssignments);
+router.get("/:id", handleGetAssignmentById);
 
 module.exports = router;
