@@ -1,4 +1,5 @@
 const { createAssignment, getAssignmentById } = require('./assignment.service');
+
 async function handleCreateAssignment(req, res){
     try{
         let { class_id, title, description, max_score, due_date } = req.body;

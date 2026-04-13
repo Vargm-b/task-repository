@@ -9,7 +9,7 @@
 <body class="layout">
     <aside class="sidebar">
         <header class="brand">
-            <img src="../assets/totoro.png" alt="Logo Task Repository">
+            <img src="../assets/brand/totoro.png" alt="Logo Task Repository">
             <h2>TR</h2>
         </header>
 
@@ -17,19 +17,19 @@
             <ul class="menu">
                 <li>
                     <a href="#" aria-disabled="true">
-                        <img src="../assets/alarm-gray.svg" alt="" class="menu-icon">
+                        <img src="../assets/icons/alarm-gray.svg" alt="" class="menu-icon">
                         <span>Actividad</span>
                     </a>
                 </li>
                 <li>
                     <a href="./class-dashboard.html">
-                        <img src="../assets/contact-gray.svg" alt="" class="menu-icon">
+                        <img src="../assets/icons/contact-gray.svg" alt="" class="menu-icon">
                         <span>Clases</span>
                     </a>
                 </li>
                 <li>
                     <a href="./assignment-list.html" class="active" aria-current="page">
-                        <img src="../assets/task-green.svg" alt="" class="menu-icon">
+                        <img src="../assets/icons/task-green.svg" alt="" class="menu-icon">
                         <span>Tareas</span>
                     </a>
                 </li>
@@ -47,15 +47,16 @@
         </header>
 
         <section class="assignment-form-section scrollable-section" aria-labelledby="publish-assignment-title">
-            <p class="breadcrumb">Portal / Tareas / Publicar tarea</p>
+            <p class="breadcrumb">Inicio / Tareas / Publicar tarea</p>
             <h2 id="publish-assignment-title">Publicar tarea</h2>
             <p>Completa los datos para crear y publicar una nueva tarea en su clase.</p>
 
             <form id="create-assignment-form" class="form-card" novalidate>
 
                 <label for="class-id">Clase</label>
-                <select id="class-id" name="classId" required>
+                <select id="class-id" name="classId" class="form-input" required>
                     <option value="" disabled selected>Seleccione una clase</option>
+                    <option value="2e0c5648-fcb2-4417-9309-c4f57f82f5a5">Sistemas de Información II</option>
                 </select>
 
                 <label for="title">Título</label>
