@@ -1,11 +1,23 @@
-const { createAssignment, getAssignmentDetail } = require('./assignment.service');
-
+const { createAssignment, getAssignmentById } = require('./assignment.service');
 async function handleCreateAssignment(req, res){
     try{
-        const { class_id, title, description, max_score, due_date } = req.body;
+        let { class_id, title, description, max_score, due_date } = req.body;
+        max_score = parseInt(max_score, 10);
+
+        const fileData = req.file ? req.file.buffer : null;
+        const fileName = req.file ? req.file.originalname : null;
+        const fileMime = req.file ? req.file.mimetype : null;
+
 
         const newAssignment = await createAssignment({
-            class_id, title, description, max_score, due_date
+            class_id, 
+            title, 
+            description, 
+            max_score, 
+            due_date, 
+            fileData,
+            fileName,
+            fileMime 
         });
         return res.status(201).json(newAssignment);
     }catch (error){
@@ -13,19 +25,17 @@ async function handleCreateAssignment(req, res){
         return res.status(400).json({error: error.message});
     }
 }
-// Nuevo controlador para obtener el detalle de una tarea con validación de acceso
-async function handleGetAssignmentDetail(req, res) {
-    try {
-        const { assignment_id } = req.params;
-        const { student_id } = req.query; 
 
-        const assignment = await getAssignmentDetail(assignment_id, student_id);
-        return res.status(200).json(assignment);
-    } catch (error) {
-        console.error('Error al obtener detalle:', error.message);
-        const status = error.message.includes('Access denied') ? 403 : 400;
-        return res.status(status).json({ error: error.message });
+async function handleGetAssignmentById(req, res) {
+    try{
+        const {id} = req.params
+        const assignment = await getAssignmentById(id);
+        return res.status(200).json(assignment)
+    }catch(error) {
+        console.error('Error al obtener tarea:', error.message);
+        return res.status(404).json({ error: error.message });
     }
 }
 
-module.exports = { handleCreateAssignment, handleGetAssignmentDetail };
+module.exports = { handleGetAssignmentById, handleCreateAssignment};
+

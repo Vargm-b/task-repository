@@ -36,4 +36,4 @@ async function createClass({name, description, teacher_id}){
     return result.rows[0];
 }
 
-module.exports = {createClass};
+module.exports = {createClass, generateUniqueAccessCode};
